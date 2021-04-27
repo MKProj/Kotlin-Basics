@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - Kotlin Basics</title>
+        <title>Hello World Kotlin! - Kotlin Basics</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active">Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html" class="active">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,14 +170,60 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="hello-world-kotlin"><a class="header" href="#hello-world-kotlin">Hello World Kotlin!</a></h1>
+<p>To explain this section, we will be going line by line of the different parts of our program: </p>
+<pre><code class="language-kotlin">// examples/01-hello.kt
+fun main(){
+    // Our program is very simple and is aimed to say hello world 
+    /* 
+    We will run each word of &quot;Hello World Kotlin!&quot; in seperate println 
+    so we can show the order of execution. 
+    */
+    println(&quot;Hello&quot;)
+    println(&quot;World&quot;)
+    println(&quot;Kotlin!&quot;)
+}
+</code></pre>
+<h2 id="main-function"><a class="header" href="#main-function">Main Function</a></h2>
+<p>You can see at the beginning of our program is <code>fun main(){}</code>, the main function is the starting point 
+of which the Kotlin Program executes the code. For an executable program, a main function is required for the
+Kotlin Program. </p>
+<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
+<p>Comments are used for the programmer and not for the actual execution of the program. It is typically used 
+to document and jot ideas down on the program, and is ignored by the compiler. There is two different type of 
+comments, there is <code>//</code> which is a single line comment and <code>\* */</code> which is multi-line comments that contains comments 
+in between <code>\*</code> and <code>*/</code>. </p>
+<h2 id="print-statements"><a class="header" href="#print-statements">Print Statements</a></h2>
+<p>A print statement is a way to output values onto the console, and there is two different print statements that exist.</p>
+<ul>
+<li><code>println()</code> : This will create a new line after outputting </li>
+<li><code>print()</code> : This will only output <strong>(not create a new line)</strong></li>
+</ul>
+<p>Now let's Compile and Run: </p>
+<pre><code class="language-bash"># If using this repo, cd examples
+$ kotlinc 01-hello.kt -include-runtime -d 01-hello.jar 
+$ ls 
+01-hello.jar  01-hello.kt
+$ java -jar 01-hello.jar 
+Hello
+World
+Kotlin!
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="00.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
+                        
+                            <a rel="next" href="02-types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -187,12 +233,35 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="00.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
+                
+                    <a rel="next" href="02-types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

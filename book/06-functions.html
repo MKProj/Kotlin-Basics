@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - Kotlin Basics</title>
+        <title>Functions - Kotlin Basics</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html" class="active">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,42 +170,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
-<p>Kotlin is a statically typed, general purpose programming language developed by JetBrains. Kotlin is 
-designed to work alongside Java, and due to it's type inference, it's code can be a lot more concise and 
-easier to read. </p>
-<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>You can install the Kotlin Compiler manually from it's <a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.32">Github Releases</a></p>
-<h3 id="mac-os-homebrew"><a class="header" href="#mac-os-homebrew">Mac OS Homebrew</a></h3>
-<p>To install on Mac OS, you may also choose to install the Kotlin compiler via Homebrew: </p>
-<pre><code class="language-bash">$ brew update
-$ brew install kotlin
-</code></pre>
-<h3 id="linux-snap"><a class="header" href="#linux-snap">Linux Snap</a></h3>
-<p>To install on a Linux Distribution, you may install via Snap: </p>
-<pre><code class="language-bash">$ sudo snap install --classic kotlin
-</code></pre>
-<h2 id="compile"><a class="header" href="#compile">Compile</a></h2>
-<p>To Compile a Kotlin <code>.kt</code> program, you must first compile it using the Kotlin Compiler to produce a Java <code>.jar</code> file: </p>
-<pre><code class="language-bash"># We will be compile an example test.kt program
-$ kotlinc hello.kt -include-runtime -d hello.jar
-# -include-runtime makes the jar file self-contained and runnable 
-# -d is the output directory option followed by the output file
-# Run kotlinc -help for more options
-</code></pre>
-<p>To run the program use java: </p>
-<pre><code class="language-bash">$ java -jar hello.jar
-</code></pre>
-<p>Now that you know how to compile and run the program, let's proceed to the next section!</p>
+                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="05-loops.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
-                            <a rel="next" href="01-intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="07-classes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -217,9 +195,13 @@ $ kotlinc hello.kt -include-runtime -d hello.jar
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="05-loops.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
                 
-                    <a rel="next" href="01-intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="07-classes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
