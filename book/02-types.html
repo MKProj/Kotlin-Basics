@@ -171,6 +171,65 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="data-types"><a class="header" href="#data-types">Data Types</a></h1>
+<p>We will begin this section off by disecting this example program that contains most topics that will be discussed: </p>
+<pre><code class="language-kotlin">fun main(){
+    /*
+     Our goal is to be able to have variables that 
+     calculate various geometric areas
+     */ 
+
+    // An immutable variable for the value of pi
+    val pi = 3.14159
+
+    var radius = 10.0
+    var area = pi * radius // Circle 
+
+    //Since we will be using the area statement a lot
+    //it's good to make it a variables 
+
+    var stm = &quot;The area of this &quot;
+    var shape = &quot;circle&quot;
+
+    println(stm + shape + &quot; is $area&quot;) // String Concetation + Template 
+
+    // Now let's say we want to find the area and volume of a square 
+    var length = 56.21
+
+    area = Math.pow(length, 2.00) // Will square the length
+    var volume = Math.pow(length, 3.00) // Will cube the length
+
+    // Now to prepare this statement 
+    // However I want each beginning letter of each word capatalized 
+
+    shape = &quot;square&quot;
+    stm = stm + shape + &quot; is $area&quot; + &quot;\nThe volume of this &quot; + shape + &quot; is $volume&quot;
+    println(stm.capitalize())
+
+}
+</code></pre>
+<h2 id="mutable-and-immutable-variables"><a class="header" href="#mutable-and-immutable-variables">Mutable and Immutable Variables</a></h2>
+<p>Variables are used in a program to store data, and in Kotlin there is two different ways to declare a variable, 
+one being <code>var</code> which is for mutable variables, and the other <code>val</code> being for immutable. Now what is the difference between 
+mutable and immutable, well the difference is between being able to be reassigned. A mutable variable is a variable that can be 
+reassigned any amount of times in a program, while a immutable cannot be reassigned a value once it is given one.</p>
+<p>You can see this in the program in the use case of <code>val pi = 3.14159</code> where we don't want <code>pi</code> to ever change. You 
+can see a few of our varaibles were reassigned, such as <code>shape</code>, <code>area</code>, etc.</p>
+<p>A neat thing that you'll notice that Kotlin has unlike Java is type inference, which is going to be talked about next...</p>
+<h2 id="type-inference"><a class="header" href="#type-inference">Type Inference</a></h2>
+<p>If you're coming from Java to Kotlin, you must've been being so confused by the no semi colons, or the fact that when you declare a
+variable, you don't need to provide a type with it. This is what Kotlin means with type inference, where the Kotlin compiler at 
+compiling time can infer what data type each varaible is.</p>
+<p>A nice way to look at Kotlin's type inference is to compare declaring a variable in Kotlin vs Java: </p>
+<table><thead><tr><th>Java</th><th>Kotlin</th></tr></thead><tbody>
+<tr><td><code>double num_double = 67.89;</code></td><td><code>var num_double = 67.89</code></td></tr>
+</tbody></table>
+<p>In Java a data type must be declared explicitly while in Kotlin, the type is implicitly inferred. </p>
+<h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
+<p>Strings are essentially an array of characters, and in Java is not considered to be a primitive type, 
+however, Strings do have useful builtin properties that are good to take advantage of. </p>
+<p>Let's first talk about <code>String Concetation</code>, and we have seen it in a few times, and a good example to look at is this:</p>
+<pre><code>stm = stm + shape + &quot; is $area&quot; + &quot;\nThe volume of this &quot; + shape + &quot; is $volume&quot;
+</code></pre>
 
                     </main>
 
@@ -209,6 +268,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
