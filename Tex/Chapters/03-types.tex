@@ -1,0 +1,170 @@
+\chapter{Data Types}
+We will begin this section off by disecting this example program that contains most topics that will be discussed: 
+\begin{verbatim}
+    fun main(){
+        /*
+         Our goal is to be able to have variables that 
+         calculate various geometric areas
+         */ 
+    
+        // An immutable variable for the value of pi
+        val pi = 3.14159
+    
+        var radius = 10.0
+        var area = pi * radius // Circle 
+    
+        //Since we will be using the area statement a lot
+        //it's good to make it a variables 
+    
+        var stm = "The area of this "
+        var shape = "circle"
+    
+        println(stm + shape + " is $area") // String Concetation + Template 
+    
+        // Now let's say we want to find the area and volume of a square 
+
+        var length = 56.21
+        area = Math.pow(length, 2.00) // Will square the length
+        var volume = Math.pow(length, 3.00) // Will cube the length
+    
+        // Now to prepare this statement 
+        // However I want each beginning letter of each word capatalized 
+    
+        shape = "square"
+
+        stm = stm + shape + " is $area" + 
+        "\nThe volume of this " + shape + " is $volume"
+
+        println(stm.capitalize())
+    
+    }  
+\end{verbatim}
+
+\section{Mutable and Immutable Variables}
+\par Variables are used in a program to store data, and in Kotlin there is two different ways to declare a variable, 
+one being \verb!var! which is for mutable variables, and the other \verb!val! being for immutable. Now what is the difference between 
+mutable and immutable, well the difference is between being able to be reassigned. A mutable variable is a variable that can be 
+reassigned any amount of times in a program, while a immutable cannot be reassigned a value once it is given one.  
+
+\par You can see this in the program in the use case of \verb!val pi = 3.14159! where we don't want \verb!pi! to ever change. You 
+can see a few of our varaibles were reassigned, such as \verb!shape!, \verb!area!, etc.  
+
+\subsection{Type Inference}
+If you're coming from Java to Kotlin, you must've been being so confused by the no semi colons, or the fact that when you declare a
+variable, you don't need to provide a type with it. This is what Kotlin means with type inference, where the Kotlin compiler at 
+compiling time can infer what data type each varaible is.  
+\\\\
+A nice way to look at Kotlin's type inference is to compare Kotlin and Java: 
+\\
+\begin{tabular}{|c|c|}
+    \hline
+    Java & Kotlin \\
+    \hline
+    \verb!double num_double = 67.89;! & \verb!var num_double = 67.89! \\
+    \hline
+\end{tabular}
+\\
+In Java a data type must be declared explicitly while in Kotlin, the type is implicitly inferred. 
+
+\section{Strings}
+Strings are essentially an array of characters, and in Java is not considered to be a primitive type, 
+however, Strings do have useful builtin properties that are good to take advantage of. 
+
+\paragraph{String Concentation}
+String Concetation is to combine Strings together with the \verb!+! operator, and as you can see, 
+it was useful for formatting our statement with the various variables we had with us. 
+\\\\
+Ex. 
+\begin{verbatim}
+stm = stm + shape + " is $area" + 
+"\nThe volume of this " + shape + " is $volume"
+\end{verbatim}
+
+\paragraph{String Templates}
+String Templates, which is also used in our example is useful to have variables in a String with \verb!$variable!
+inside the String to cleanly write the strings without needing to concetate a lot.  
+
+\paragraph{String Builtin Properties}
+In the ending of the program, we use a builtin String function called \verb!.capatilize()! which served our
+purpose to capatalize each word in a String. There is also \verb!.length()! which returns the number of characters in a String. 
+It is a good idea to explore the various String properties that Kotlin offers. 
+
+\paragraph{Character Escape Sequences}
+Character escape sequences consist of a backslash and character and are used to format text.
+
+\begin{itemize}
+    \item \verb!\n! Inserts a new line
+    \item \verb!\t! Inserts a tab
+    \item \verb!\r! Inserts a carriage return
+    \item \verb!\'! Inserts a single quote
+    \item \verb!\"! Inserts a double quote
+    \item \verb!\\! Inserts a backslash
+    \item \verb!\$! Inserts a dollar symbol
+\end{itemize}
+
+\section{Math}
+\paragraph{Arithmetic Operators}
+Kotlin includes the following arithmetic operators: 
+\begin{itemize}
+    \item \verb!+! addition
+    \item \verb!-! subtraction
+    \item \verb!*! multiplication
+    \item \verb!/! division
+    \item \verb!%! modulus
+\end{itemize}
+
+\paragraph{Order of Operations}
+The order of operations for compound arithmetic expressions is as follows:
+
+\begin{enumerate}
+    \item Parantheses
+    \item Multiplication
+    \item Division
+    \item Modulus
+    \item Addition
+    \item Subtraction
+\end{enumerate}
+
+
+When an expression contains operations such as multiplication and division or addition and 
+subtraction side by side, the compiler will evaluate the expression in a left to right order.
+
+\paragraph{Augmented Assignment Operators}
+An augmented assignment operator includes a single arithmetic and assignment operator used 
+to calculate and reassign a value in one step.
+
+\begin{verbatim}
+    var a = 10
+    var b = 7
+
+    a += b // 10 + 7
+    a -= b // 17 - 7
+    a *= b // 10 * 7
+    a /= b // 70 / 7
+    a %= b // 10 % 7
+\end{verbatim}
+
+\paragraph{Increment and Decrement Operators}
+Increment and decrement operators provide a shorthand syntax for adding or subtracting 1 from a value. 
+An increment operator consists of two consecutive plus symbols, \verb!++!, meanwhile a decrement operator 
+consists of two consecutive minus symbols, \verb!--!.
+
+\begin{verbatim}
+    var num = 78
+
+    num++ // 79
+    num-- // 78
+\end{verbatim}
+
+\textit{The Increment Operator is commonly used in loops (Chapter 6)}
+
+\paragraph{The Math Library}
+The Math library, inherited from Java, contains various mathematical 
+functions that can be used within a Kotlin program.
+
+\begin{verbatim}
+    Math.pow(2.0, 3.0)  // 8.0
+    Math.min(6, 9)      // 6 
+    Math.max(10, 12)    // 12
+    Math.round(13.7)    // 14
+\end{verbatim}
