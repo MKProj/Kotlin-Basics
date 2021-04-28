@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html" class="active">Data Types</a></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html" class="active">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -207,77 +207,6 @@
 
 }
 </code></pre>
-<h2 id="mutable-and-immutable-variables"><a class="header" href="#mutable-and-immutable-variables">Mutable and Immutable Variables</a></h2>
-<p>Variables are used in a program to store data, and in Kotlin there is two different ways to declare a variable, 
-one being <code>var</code> which is for mutable variables, and the other <code>val</code> being for immutable. Now what is the difference between 
-mutable and immutable, well the difference is between being able to be reassigned. A mutable variable is a variable that can be 
-reassigned any amount of times in a program, while a immutable cannot be reassigned a value once it is given one.</p>
-<p>You can see this in the program in the use case of <code>val pi = 3.14159</code> where we don't want <code>pi</code> to ever change. You 
-can see a few of our varaibles were reassigned, such as <code>shape</code>, <code>area</code>, etc.</p>
-<p>A neat thing that you'll notice that Kotlin has unlike Java is type inference, which is going to be talked about next...</p>
-<h2 id="type-inference"><a class="header" href="#type-inference">Type Inference</a></h2>
-<p>If you're coming from Java to Kotlin, you must've been being so confused by the no semi colons, or the fact that when you declare a
-variable, you don't need to provide a type with it. This is what Kotlin means with type inference, where the Kotlin compiler at 
-compiling time can infer what data type each varaible is.</p>
-<p>A nice way to look at Kotlin's type inference is to compare declaring a variable in Kotlin vs Java: </p>
-<table><thead><tr><th>Java</th><th>Kotlin</th></tr></thead><tbody>
-<tr><td><code>double num_double = 67.89;</code></td><td><code>var num_double = 67.89</code></td></tr>
-</tbody></table>
-<p>In Java a data type must be declared explicitly while in Kotlin, the type is implicitly inferred. </p>
-<h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
-<p>Strings are essentially an array of characters, and in Java is not considered to be a primitive type, 
-however, Strings do have useful builtin properties that are good to take advantage of. </p>
-<p>Let's first talk about <code>String Concetation</code>, and we have seen it in a few times, and a good example to look at is this:</p>
-<pre><code>stm = stm + shape + &quot; is $area&quot; + &quot;\nThe volume of this &quot; + shape + &quot; is $volume&quot;
-</code></pre>
-<p>String Concetation is to combine Strings together with the <code>+</code> operator, and as you can see, it was useful for formatting 
-our statement with the various variables we had with us. </p>
-<p>Next is <code>String Templates</code>, which is also used in our example is useful to have variables in a String with <code>$variable</code> inside 
-the String to cleanly write the strings without needing to concetate a lot.</p>
-<p>In the ending of the program, we use a builtin String function called <code>.capatilize()</code> which served our purpose to capatalize 
-each word in a String. There is also <code>.length()</code> which returns the number of characters in a String. It is a good idea to explore 
-the various String properties that Kotlin offers. </p>
-<h2 id="character-escape-sequences"><a class="header" href="#character-escape-sequences">Character Escape Sequences</a></h2>
-<p>Character escape sequences consist of a backslash and character and are used to format text.</p>
-<ul>
-<li>\n Inserts a new line</li>
-<li>\t Inserts a tab</li>
-<li>\r Inserts a carriage return</li>
-<li>\' Inserts a single quote</li>
-<li>\&quot; Inserts a double quote</li>
-<li>\\ Inserts a backslash</li>
-<li>\$ Inserts the dollar symbol</li>
-</ul>
-<h2 id="math"><a class="header" href="#math">Math</a></h2>
-<h3 id="arithmetic-operators"><a class="header" href="#arithmetic-operators">Arithmetic Operators</a></h3>
-<p>Kotlin includes the following arithmetic operators: </p>
-<ul>
-<li><code>+</code> addition</li>
-<li><code>-</code> subtraction </li>
-<li><code>*</code> multiplication </li>
-<li><code>/</code> division </li>
-<li><code>%</code> modulus </li>
-</ul>
-<h3 id="order-of-operations"><a class="header" href="#order-of-operations">Order of Operations</a></h3>
-<p>The order of operations for compound arithmetic expressions is as follows:</p>
-<ol>
-<li>Parentheses</li>
-<li>Multiplication</li>
-<li>Division</li>
-<li>Modulus</li>
-<li>Addition</li>
-<li>Subtraction</li>
-</ol>
-<p>When an expression contains operations such as multiplication and division or addition and 
-subtraction side by side, the compiler will evaluate the expression in a left to right order.</p>
-<h3 id="augmented-assignment-operators"><a class="header" href="#augmented-assignment-operators">Augmented Assignment Operators</a></h3>
-<p>An augmented assignment operator includes a single arithmetic and assignment operator used to calculate and reassign a value in one step.</p>
-<pre><code class="language-kotlin">var sum = 10
-var num = 7
-
-sum += num // 10 + 7
-
-</code></pre>
 
                     </main>
 
@@ -290,7 +219,7 @@ sum += num // 10 + 7
                         
 
                         
-                            <a rel="next" href="03-conditionals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="02-01-var.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -308,7 +237,7 @@ sum += num // 10 + 7
                 
 
                 
-                    <a rel="next" href="03-conditionals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="02-01-var.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
