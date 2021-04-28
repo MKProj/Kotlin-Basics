@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Conditionals - Kotlin Basics</title>
+        <title>Conditional Expressions - Kotlin Basics</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html" class="active">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html" class="active">Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html">Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,7 +170,83 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+                        <h1 id="conditional-expressions"><a class="header" href="#conditional-expressions">Conditional Expressions</a></h1>
+<h2 id="if-statements"><a class="header" href="#if-statements">If Statements</a></h2>
+<p>An <code>if</code> statement is used to execute a section of code if an expression results to <code>true</code>. A great way to look at this is an example: </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 5) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> is indeed equal to 5, then the program will execute <code>println(&quot;True!&quot;)</code>, however, let's say we had, </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, the expression results to <code>false</code>, so the program doesn't print anything. </p>
+<h2 id="else-statements"><a class="header" href="#else-statements">Else Statements</a></h2>
+<p>An <code>else</code> statement is used to execute a section of code if an expression results to <code>false</code>. Let's fix our previous example 
+a bit to include an <code>else</code> statement:</p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+} else {
+    println(&quot;False!&quot;)
+}
+
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, it follows the <code>else</code> statement, and executes <code>println(&quot;False!&quot;)</code>.</p>
+<h2 id="else-if-statements"><a class="header" href="#else-if-statements">Else-If Statements</a></h2>
+<p>An <code>else-if</code> expression allows for more conditions to be evaluated within an <code>if/else</code> expression.</p>
+<p><strong>Note:</strong> You can use multiple else-if expressions as long as they appear after the if expression and before the else expression.</p>
+<pre><code class="language-kotlin">var num = 8 
+
+if (num &gt; 8){
+    println(num)
+} else if (num == 8){
+    println(num++)
+} else {
+    println(num--)
+}
+// Prints 9
+</code></pre>
+<h2 id="nested-conditionals"><a class="header" href="#nested-conditionals">Nested Conditionals</a></h2>
+<p>A nested conditional is a conditional statement within another conditional statement. Essentially an <code>if</code> statement inside an <code>if</code> statement. </p>
+<pre><code class="language-kotlin">var foo = true 
+var bar = true 
+
+if (foo){
+    println(&quot;FOO!&quot;)
+    if (bar){
+        println(&quot;BAR!&quot;)
+    }
+} else {
+    println(&quot;No Foo or Bar for you&quot;)
+}
+/* 
+Prints: 
+FOO!
+BAR!
+*/
+</code></pre>
+<h2 id="when-statements"><a class="header" href="#when-statements">When Statements</a></h2>
+<p>After a while you may get sick of a huge tree of <code>else if</code> statements, so any better option? The <code>when</code> statement is useful to 
+execute code depending on the value of the expression. </p>
+<pre><code class="language-kotlin">var grade = &quot;F&quot;
+
+when (grade){
+    &quot;A&quot; -&gt; println(&quot;Excellent&quot;)
+    &quot;B&quot; -&gt; println(&quot;Okay&quot;)
+    &quot;C&quot; -&gt; println(&quot;Bad&quot;)
+    &quot;D&quot; -&gt; println(&quot;Terrible&quot;)
+    else -&gt; println(&quot;FAIL&quot;)
+}
+// Prints FAIL
+</code></pre>
 
                     </main>
 
@@ -183,7 +259,7 @@
                         
 
                         
-                            <a rel="next" href="04-collections.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="03-01-operators.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -201,7 +277,7 @@
                 
 
                 
-                    <a rel="next" href="04-collections.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="03-01-operators.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

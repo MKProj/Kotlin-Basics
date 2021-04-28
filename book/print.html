@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditionals</a></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html">Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -362,7 +362,160 @@ Math.min(6, 9)      // 6
 Math.max(10, 12)    // 12
 Math.round(13.7)    // 14
 </code></pre>
-<h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+<h1 id="conditional-expressions"><a class="header" href="#conditional-expressions">Conditional Expressions</a></h1>
+<h2 id="if-statements"><a class="header" href="#if-statements">If Statements</a></h2>
+<p>An <code>if</code> statement is used to execute a section of code if an expression results to <code>true</code>. A great way to look at this is an example: </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 5) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> is indeed equal to 5, then the program will execute <code>println(&quot;True!&quot;)</code>, however, let's say we had, </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, the expression results to <code>false</code>, so the program doesn't print anything. </p>
+<h2 id="else-statements"><a class="header" href="#else-statements">Else Statements</a></h2>
+<p>An <code>else</code> statement is used to execute a section of code if an expression results to <code>false</code>. Let's fix our previous example 
+a bit to include an <code>else</code> statement:</p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+} else {
+    println(&quot;False!&quot;)
+}
+
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, it follows the <code>else</code> statement, and executes <code>println(&quot;False!&quot;)</code>.</p>
+<h2 id="else-if-statements"><a class="header" href="#else-if-statements">Else-If Statements</a></h2>
+<p>An <code>else-if</code> expression allows for more conditions to be evaluated within an <code>if/else</code> expression.</p>
+<p><strong>Note:</strong> You can use multiple else-if expressions as long as they appear after the if expression and before the else expression.</p>
+<pre><code class="language-kotlin">var num = 8 
+
+if (num &gt; 8){
+    println(num)
+} else if (num == 8){
+    println(num++)
+} else {
+    println(num--)
+}
+// Prints 9
+</code></pre>
+<h2 id="nested-conditionals"><a class="header" href="#nested-conditionals">Nested Conditionals</a></h2>
+<p>A nested conditional is a conditional statement within another conditional statement. Essentially an <code>if</code> statement inside an <code>if</code> statement. </p>
+<pre><code class="language-kotlin">var foo = true 
+var bar = true 
+
+if (foo){
+    println(&quot;FOO!&quot;)
+    if (bar){
+        println(&quot;BAR!&quot;)
+    }
+} else {
+    println(&quot;No Foo or Bar for you&quot;)
+}
+/* 
+Prints: 
+FOO!
+BAR!
+*/
+</code></pre>
+<h2 id="when-statements"><a class="header" href="#when-statements">When Statements</a></h2>
+<p>After a while you may get sick of a huge tree of <code>else if</code> statements, so any better option? The <code>when</code> statement is useful to 
+execute code depending on the value of the expression. </p>
+<pre><code class="language-kotlin">var grade = &quot;F&quot;
+
+when (grade){
+    &quot;A&quot; -&gt; println(&quot;Excellent&quot;)
+    &quot;B&quot; -&gt; println(&quot;Okay&quot;)
+    &quot;C&quot; -&gt; println(&quot;Bad&quot;)
+    &quot;D&quot; -&gt; println(&quot;Terrible&quot;)
+    else -&gt; println(&quot;FAIL&quot;)
+}
+// Prints FAIL
+</code></pre>
+<h1 id="conditional-operators"><a class="header" href="#conditional-operators">Conditional Operators</a></h1>
+<h2 id="comparison-operators"><a class="header" href="#comparison-operators">Comparison Operators</a></h2>
+<p>Comparison operators are symbols that are used to compare two values in order to return a result of <code>true</code> or <code>false</code>.</p>
+<p>The comparison operators include the following: </p>
+<ul>
+<li><code>&lt;</code> less than </li>
+<li><code>&gt;</code> greater than</li>
+<li><code>&lt;=</code> less than or equal to </li>
+<li><code>&gt;=</code> greater than or equal to </li>
+</ul>
+<pre><code class="language-kotlin">var Khloe = 19
+var Zane = 18
+var Nimu = 20
+
+Khloe &gt; Zane //true 
+Zane &lt; Nimu // true 
+Khloe &gt;= Nimu // false 
+Nimu &lt;= Zane // false
+</code></pre>
+<h2 id="logic-operators"><a class="header" href="#logic-operators">Logic Operators</a></h2>
+<p>Logical operators are symbols used to evaluate the relationship between two or more Boolean expressions in order to return a <code>true</code> or <code>false</code> value.</p>
+<p>The logic operators include the following:</p>
+<ul>
+<li><code>!</code> NOT</li>
+<li><code>&amp;&amp;</code> AND</li>
+<li><code>||</code> OR</li>
+</ul>
+<h3 id="-not-operator"><a class="header" href="#-not-operator">&quot;!&quot; NOT Operator</a></h3>
+<p>The NOT operator evaluates a boolean expression and return it's opposite value <code>(true -&gt; false)</code>. </p>
+<pre><code class="language-kotlin">var exp = true 
+println(!exp)
+// Prints false 
+</code></pre>
+<h3 id="and-operator"><a class="header" href="#and-operator">&quot;&amp;&amp;&quot; AND Operator</a></h3>
+<p>The AND operator only evaluates to <code>true</code> if both expressions it's evaluating results to <code>true</code>. </p>
+<pre><code class="language-kotlin">if (4 &lt; 5 &amp;&amp; 6 &gt; 3){ //Both expressions are true 
+    println(&quot;True&quot;)
+} else {
+    println(&quot;False&quot;)
+}
+// Prints true 
+</code></pre>
+<h3 id="-or-operator"><a class="header" href="#-or-operator">&quot;||&quot; OR Operator</a></h3>
+<p>The OR operator only evaluates to <code>true</code> if one of the expressions result to <code>true</code>. </p>
+<pre><code class="language-kotlin">if (1.2 &lt; 9.8 || 5 &gt; 9){ // One results to true 
+    println(&quot;True&quot;)
+} else {
+    println(&quot;False&quot;)
+}
+//Prints True
+</code></pre>
+<h3 id="order-of-evaluation"><a class="header" href="#order-of-evaluation">Order of Evaluation</a></h3>
+<p>The order of evaluation when using multiple logical operators in a single Boolean expression is:</p>
+<ol>
+<li>Expressions placed in parentheses</li>
+<li>NOT(<code>!</code>) operator</li>
+<li>AND(<code>&amp;&amp;</code>) operator</li>
+<li>OR(<code>||</code>) operator</li>
+</ol>
+<pre><code class="language-kotlin">
+!true || (true &amp;&amp; false) // false
+
+</code></pre>
+<h3 id="the-range-operator"><a class="header" href="#the-range-operator">The Range Operator</a></h3>
+<p>The range operator (<code>..</code>) is used to create a succession of number or character values.</p>
+<pre><code class="language-kotlin">var grades = 90
+
+when (grades){
+    90..101 -&gt; println(&quot;A+&quot;)
+    80..90 -&gt;  println(&quot;A&quot;)
+    .
+    .
+    .
+    else -&gt; println(&quot;F&quot;)
+}
+// Prints A+ 
+</code></pre>
 <h1 id="collections"><a class="header" href="#collections">Collections</a></h1>
 <h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
