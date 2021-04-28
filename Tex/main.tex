@@ -60,9 +60,9 @@
 \thispagestyle{empty} % Suppress headers and footers on the title page
 \begin{tikzpicture}[remember picture,overlay]
 \node[inner sep=0pt] (background) at (current page.center) {\includegraphics[width=\paperwidth]{background.pdf}};
-\draw (current page.center) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Title\\[15pt] % Book title
-{\Large Subtitle}\\[20pt] % Subtitle
-{\huge Author}}}; % Author name
+\draw (current page.center) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Kotlin Basics\\[15pt] % Book title
+{\Large A New Way To Develop}\\[20pt] % Subtitle
+{\huge Mustafif Khan}}}; % Author name
 \end{tikzpicture}
 \vfill
 \endgroup
@@ -75,11 +75,11 @@
 ~\vfill
 \thispagestyle{empty}
 
-\noindent Copyright \copyright\ Year Author\\ % Copyright notice
+\noindent Copyright \copyright\ 2021 Mustafif Khan\\ % Copyright notice
 
-\noindent \textsc{Published by Publisher}\\ % Publisher
+\noindent \textsc{Published by MKProjects}\\ % Publisher
 
-\noindent \textsc{book-website.com}\\ % URL
+\noindent \textsc{mkproj.com}\\ % URL
 
 \noindent Licensed under the Creative Commons Attribution 4.0 International License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{https://creativecommons.org/licenses/by/4.0/}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
 
@@ -106,18 +106,14 @@
 %	PART
 %----------------------------------------------------------------------------------------
 
-\part{Part One}
+%\part{Part One}
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 1
 %----------------------------------------------------------------------------------------
 
 \chapterimage{chapter_head_2.pdf} % Chapter heading image
-
-\chapter{Text Chapter}
-
-\section{Paragraphs of Text}\index{Paragraphs of Text}
-
-\lipsum[1-7] % Dummy text
+\input{Chapters/01-install.tex}
+\input{Chapters/02-intro.tex}
 
 \end{document}

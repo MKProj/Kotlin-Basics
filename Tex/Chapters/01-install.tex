@@ -1,0 +1,43 @@
+\chapter{Getting Started}
+Kotlin is a statically typed, general purpose programming language developed by JetBrains. Kotlin is 
+designed to work alongside Java, and due to it's type inference, it's code can be a lot more concise and 
+easier to read. 
+
+\section{Installation}
+You can install the Kotlin Compiler manually from it's Github Releases 
+\\
+\url{https://github.com/JetBrains/kotlin/releases/tag/v1.4.32}
+
+\paragraph{MacOS Homebrew}
+To install on Mac OS, you may also choose to install the Kotlin compiler via Homebrew: 
+\begin{verbatim}
+$ brew update
+$ brew install kotlin
+\end{verbatim}
+
+
+\paragraph{Linux Snap}
+To  install on a Linux Distribution, you may install via Snap:
+\\
+\verb!$ sudo snap install --classic kotlin!
+
+\newpage
+
+\section{Compile}
+To Compile a Kotlin \verb!/kt! program, you must first compile it using the 
+Kotlin Compiler to produce a Java !.jar! file:
+
+\begin{verbatim}
+# We will be compile an example test.kt program
+$ kotlinc hello.kt -include-runtime -d hello.jar
+# -include-runtime makes the jar file self-contained and runnable 
+# -d is the output directory option followed by the output file
+# Run kotlinc -help for more options
+\end{verbatim}
+
+To run the program use java:
+
+\verb!$ java -jar hello.jar!
+\\
+Now that you know how to compile and run the program, let's proceed to the next section!
+

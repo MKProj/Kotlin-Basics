@@ -69,3 +69,58 @@ Let's first talk about `String Concetation`, and we have seen it in a few times,
 ```
 stm = stm + shape + " is $area" + "\nThe volume of this " + shape + " is $volume"
 ```
+
+String Concetation is to combine Strings together with the `+` operator, and as you can see, it was useful for formatting 
+our statement with the various variables we had with us. 
+
+Next is `String Templates`, which is also used in our example is useful to have variables in a String with `$variable` inside 
+the String to cleanly write the strings without needing to concetate a lot.  
+
+In the ending of the program, we use a builtin String function called `.capatilize()` which served our purpose to capatalize 
+each word in a String. There is also `.length()` which returns the number of characters in a String. It is a good idea to explore 
+the various String properties that Kotlin offers. 
+
+## Character Escape Sequences
+Character escape sequences consist of a backslash and character and are used to format text.
+
+- \n Inserts a new line
+- \t Inserts a tab
+- \r Inserts a carriage return
+- \\' Inserts a single quote
+- \\" Inserts a double quote
+- \\\\ Inserts a backslash
+- \\$ Inserts the dollar symbol
+
+## Math 
+### Arithmetic Operators 
+Kotlin includes the following arithmetic operators: 
+- `+` addition
+- `-` subtraction 
+- `*` multiplication 
+- `/` division 
+- `%` modulus 
+
+### Order of Operations 
+The order of operations for compound arithmetic expressions is as follows:
+
+1. Parentheses
+2. Multiplication
+3. Division
+4. Modulus
+5. Addition
+6. Subtraction  
+
+When an expression contains operations such as multiplication and division or addition and 
+subtraction side by side, the compiler will evaluate the expression in a left to right order.
+
+### Augmented Assignment Operators
+An augmented assignment operator includes a single arithmetic and assignment operator used to calculate and reassign a value in one step.
+
+```kotlin 
+var sum = 10
+var num = 7
+
+sum += num // 10 + 7
+
+```
+
