@@ -11,4 +11,4 @@
 - [Collections](04-collections.md)
 - [Loops](05-loops.md)
 - [Functions](06-functions.md)
-- [Classes](07-classes)
+- [Classes](07-classes.md)

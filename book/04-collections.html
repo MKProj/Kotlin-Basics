@@ -200,6 +200,116 @@ will be covering <code>Lists</code>, <code>Sets</code> and <code>Maps</code>. </
 println(grades.size)
 // Prints 5
 </code></pre>
+<h3 id="list-operations"><a class="header" href="#list-operations">List Operations</a></h3>
+<p>The list collection supports various operations in the form of built-in functions that can be performed on its elements.</p>
+<p>Some functions perform read and write operations, whereas others perform read-only operations.</p>
+<p>The functions that perform read and write operations can only be used on <code>mutable</code> lists while read-only operations can be 
+performed on both <code>mutable</code> and <code>immutable</code> lists.</p>
+<pre><code class="language-kotlin">var programming_languages = mutableListOf(&quot;Kotlin&quot;, &quot;Java&quot;, &quot;C++&quot;, &quot;Rust&quot;)
+
+if (programming_languages.contains(&quot;Python&quot;) /*read only*/){
+  println(&quot;Python is pretty cool&quot;)
+} else {
+  programming_languages.add(&quot;Python&quot;) //write 
+}
+</code></pre>
+<h2 id="sets"><a class="header" href="#sets">Sets</a></h2>
+<h3 id="immutable-and-mutable-sets"><a class="header" href="#immutable-and-mutable-sets">Immutable and Mutable Sets</a></h3>
+<ul>
+<li>
+<p>An immutable set represents a collection of unique elements in an unordered format whose elements cannot be changed throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>setOf</code>, followed by a pair of parentheses, <code>( )</code> holding unique values.</li>
+<li><code>var origin_factions = setOf(&quot;Mythicals&quot;, &quot;Sorcerers&quot;, &quot;Kindgom&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable set represents a collection of ordered elements that possess both read and write functionalities.</p>
+<ul>
+<li>It is declared with the term, <code>mutableSetOf</code>, followed by a pair of parantheses, <code>( )</code> holding unique values. </li>
+<li><code>var mkproj_projects = mutableSetOf(&quot;Phaktionz&quot;, &quot;Books&quot;, &quot;UniConv&quot;, &quot;Moka&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="accessing-set-elements"><a class="header" href="#accessing-set-elements">Accessing Set Elements</a></h3>
+<p>Elements in a set can be accessed using the <code>elementAt()</code> or <code>elementAtOrNull()</code> functions.</p>
+<ul>
+<li>
+<p>The <code>elementAt()</code> function gets appended onto a set name and returns the element at the specified position within the parentheses.</p>
+</li>
+<li>
+<p>The <code>elementAtOrNull()</code> function is a safer variation of the <code>elementAt()</code> function</p>
+<ul>
+<li>Returns <code>null</code> if the position is out of bounds as opposed to throwing an error.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">var example = setOf(&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;)
+
+println(example.elementAt(1)) // Prints Bar
+println(example.elementAt(5)) // Returns an error 
+println(example.elementAtOrNull(5)) // Prints null
+</code></pre>
+<h2 id="maps"><a class="header" href="#maps">Maps</a></h2>
+<h3 id="immutable-and-mutable-maps"><a class="header" href="#immutable-and-mutable-maps">Immutable and Mutable Maps</a></h3>
+<ul>
+<li>
+<p>An immutable Map represents a collection of entries that cannot be altered throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>mapOf</code>, followed by a pair of parentheses. 
+<ul>
+<li>Within the parentheses, each key should be linked to its corresponding value with the <code>to</code> keyword, and each entry should be separated by a comma.</li>
+<li><code>var student_records = mapOf(&quot;Johnny&quot; to 95, &quot;Billy  to 65, &quot;Kimmy&quot; to 85)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>A mutable map represents a collection of entries that possess read and write functionalities. Entries can be added, removed, or updated in a mutable map.</p>
+<ul>
+<li>A mutable map can be declared with the term, <code>mutableMapOf</code>, followed by a pair of parentheses holding key-value pairs.</li>
+<li><code>var prices = mutableMapOf(&quot;Gum&quot; to 1.50, &quot;Bananas / kg&quot; to 0.88, &quot;Blueberries&quot; to 3.97)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="retrieving-map-keys-and-values"><a class="header" href="#retrieving-map-keys-and-values">Retrieving Map Keys and Values</a></h3>
+<ul>
+<li>Keys and values within a map can be retrieved using the <code>.keys</code> and <code>.values</code> properties.</li>
+<li>The <code>.keys</code> property returns a list of key elements, whereas the <code>.values</code> property returns a list of value elements.</li>
+<li>To retrieve a single value associated with a key, the shorthand, <code>[key]</code>, syntax can be used.</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+println(albums.keys)
+// Prints [&quot;The Chronics&quot;, &quot;The Blueprint&quot;, &quot;Marshall Mathers LP&quot;]
+println(albums.values)
+// Prints [&quot;Dr Dre&quot;, &quot;Jay Z&quot;, &quot;Eminem&quot; ]
+println(albums[&quot;The Blueprint&quot;])
+// Prints Jay Z
+</code></pre>
+<h3 id="adding-and-removing-map-entries"><a class="header" href="#adding-and-removing-map-entries">Adding and Removing Map Entries</a></h3>
+<p>An entry can be added to a mutable map using the <code>put()</code> function. 
+Oppositely, an entry can be removed from a mutable map using the <code>remove()</code> function.</p>
+<ul>
+<li>
+<p>The <code>put()</code> function accepts a key and a value separated by a comma.</p>
+</li>
+<li>
+<p>The <code>remove()</code> function accepts a key and removes the entry associated with that key</p>
+</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mutableMapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+albums.put(&quot;All Eyez On Me&quot;, &quot;2Pac&quot;)
+
+println(albums)
+// Prints {&quot;The Chronics&quot;=&quot;Dr Dre&quot;, &quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+albums.remove(&quot;The Chronics&quot;)
+println(albums)
+// Prints {&quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+</code></pre>
 
                     </main>
 
