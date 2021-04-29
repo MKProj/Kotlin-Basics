@@ -171,6 +171,105 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>A function is a named, reusable block of code that can be called and executed throughout a program.</p>
+<p>A function is declared with the <code>fun</code> keyword, a function name, parentheses containing (optional) parameters, as well as an (optional) return type.</p>
+<p>To call/invoke a function, write the name of the function followed by parentheses.</p>
+<pre><code class="language-kotlin">fun print_five() {
+  println(&quot;5&quot;)
+}
+ 
+fun main() {
+  // Function call
+  print_five() // Prints: 5
+}
+</code></pre>
+<h2 id="function-paramaters"><a class="header" href="#function-paramaters">Function Paramaters</a></h2>
+<p>In Kotlin, a parameter is a piece of data we can pass into a function when invoking it.</p>
+<p>To pass data into a function, the function’s header must include parameters that describe the name and data type of the incoming data. 
+If a function is declared with parameters, then data must be passed when the function is invoked. We can include as many parameters as needed.</p>
+<pre><code class="language-kotlin">fun birthday(name: String, age: Int) {`
+   println(&quot;Happy birthday $name! You turn $age today!&quot;)
+}
+ 
+fun main() {
+  birthday(&quot;Oscar&quot;, 26) // Prints: Happy birthday Oscar! You turn 25 today!
+  birthday(&quot;Amarah&quot;, 30) // Prints: Happy birthday Amarah! You turn 30 today!
+}
+</code></pre>
+<h2 id="default-parameters"><a class="header" href="#default-parameters">Default Parameters</a></h2>
+<p>We can give parameters a default value which provides a parameter an automatic value if no value is passed into the function when it’s invoked.</p>
+<pre><code class="language-kotlin">fun favoriteLanguage(name, language = &quot;Kotlin&quot;) {
+  println(&quot;Hello, $name. Your favorite programming language is $language&quot;)  
+}
+ 
+ 
+fun main() {
+  favoriteLanguage(&quot;Manon&quot;) 
+  // Prints: Hello, Manon. Your favorite programming language is Kotlin
+  
+  favoriteLanguage(&quot;Lee&quot;, &quot;Java&quot;) 
+  // Prints: Hello, Lee. Your favorite programming language is Java
+}
+</code></pre>
+<h2 id="named-parameters"><a class="header" href="#named-parameters">Named parameters</a></h2>
+<p>We can name our parameters when invoking a function to provide additional readability.</p>
+<p>To name a parameter, write the parameter name followed by the assignment operator <code>(=)</code> and the parameter value. 
+The parameter’s name must have the same name as the parameter in the function being called.</p>
+<p>By naming our parameters, we can place parameters in any order when the function is being invoked.</p>
+<pre><code class="language-kotlin">fun findMyAge(currentYear: Int, birthYear: Int) {
+   var myAge = currentYear - birthYear
+   println(&quot;I am $myAge years old.&quot;)
+}
+ 
+fun main() {
+  findMyAge(currentYear = 2020, birthYear = 1995)
+  // Prints: I am 25 years old.
+  findMyAge(birthYear = 1920, currentYear = 2020)
+  // Prints: I am 100 years old.
+}
+</code></pre>
+<h2 id="return-statement"><a class="header" href="#return-statement">Return Statement</a></h2>
+<p>In Kotlin, in order to return a value from a function, we must add a return statement to our function using the <code>return</code> keyword. 
+This value is then passed to where the function was invoked.</p>
+<p>If we plan to return a value from a function, we must declare the return type in the function header.</p>
+<pre><code class="language-kotlin">// Return type is declared outside the parentheses
+fun getArea(length: Int, width: Int): Int {
+  var area = length * width
+ 
+  // return statement
+  return area
+}
+ 
+fun main() {
+  var myArea = getArea(10, 8)
+  println(&quot;The area is $myArea.&quot;) // Prints: The area is 80.
+}
+</code></pre>
+<h2 id="single-expression-functions"><a class="header" href="#single-expression-functions">Single Expression Functions</a></h2>
+<p>If a function contains only a single expression, we can use a shorthand syntax to create our function.</p>
+<p>Instead of placing curly brackets after the function header to contain the function’s code block, we can use an assignment operator <code>=</code> followed by the expression being returned.</p>
+<pre><code class="language-kotlin">fun fullName(firstName: String, lastName: String) = &quot;$firstName $lastName&quot;
+ 
+fun main() {
+  println(fullName(&quot;Ariana&quot;, &quot;Ortega&quot;)) // Prints: Ariana Ortega
+  println(fullName(&quot;Kai&quot;, &quot;Gittens&quot;)) // Prints: Kai Gittens
+}
+</code></pre>
+<h2 id="function-literals"><a class="header" href="#function-literals">Function Literals</a></h2>
+<p>Function literals are unnamed functions that can be treated as expressions: we can assign them to variables, call them, pass them as parameters, and return them from a function as we could with any other value.</p>
+<p>Two types of function literals are <code>anonymous functions</code> and <code>lambda expressions</code>.</p>
+<pre><code class="language-kotlin">fun main() {
+  // Anonymous Function:
+  var getProduct = fun(num1: Int, num2: Int): Int {
+     return num1 * num2
+  }
+  println(getProduct(8, 3)) // Prints: 24
+ 
+  // Lambda Expression
+  var getDifference = { num1: Int, num2: Int -&gt; num1 - num2 }
+  println(getDifference(10, 3)) // Prints: 7
+}
+</code></pre>
 
                     </main>
 
@@ -209,6 +308,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

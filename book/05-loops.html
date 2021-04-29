@@ -176,7 +176,7 @@
 <p>Let's examine the following code: </p>
 <pre><code class="language-kotlin">var list = listOf[&quot;Hello&quot;, &quot;Example&quot;, &quot;Test&quot;]
 
-for (i in 0..list.size){
+for (i in 0..list){
     println(list[i])
 }
 /* Prints: 
@@ -189,11 +189,59 @@ Test
 <li><code>for</code> is a keyword used to declare a for loop.</li>
 <li>We define <code>i</code> as the loop variable. This variable holds the current iteration value and can be used within the loop body.</li>
 <li>The <code>in</code> keyword is between the variable definition and the iterator.</li>
-<li>The range <code>0..list.size</code> is the for loop iterator.</li>
+<li>The range <code>0..list</code> is the for loop iterator.</li>
 </ul>
 <p>An <code>iterator</code> is an object that allows us to step through and access every individual element in a collection of values. </p>
 <p><strong>Note:</strong> It is important to note that the loop variable only exists within the loop’s code block. 
 Trying to access the loop variable outside the <code>for</code> loop will result in an error.</p>
+<h3 id="controlling-iteration"><a class="header" href="#controlling-iteration">Controlling Iteration</a></h3>
+<p>Sometimes we want to count backwards, or count by 5s, or maybe both! Using certain functions alongside or instead of the normal range operator <code>(..)</code> can enhance the iterative abilities of our <code>for</code> loops. The functions <code>downTo</code>, <code>until</code> and <code>step</code> give us more control of a range and therefore more control of our loops.</p>
+<ul>
+<li>The <code>downTo</code> function simply creates a reverse order group of values, where the starting boundary is greater than the ending boundary. To accomplish this, replace the range operator <code>(..)</code> with <code>downTo</code>:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 4 downTo 1) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 4
+i = 3
+i = 2
+i = 1
+*/
+</code></pre>
+<p>We can see in the output that the first number in i is 4 and the last is 1</p>
+<ul>
+<li>The <code>until</code> function creates an ascending range, just like the <code>(..)</code> operator, but excludes the upper boundary:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1 until 4) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 2
+i = 3
+*/
+</code></pre>
+<p>The upper boundary, 4, is not included in the output </p>
+<ul>
+<li>Up until now, each of these functions, including the range operator (..), have counted up or down by one. 
+The <code>step</code> function specifies the amount these functions count by:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1..8 step 2) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 3
+i = 5
+i = 7
+*/
+</code></pre>
+<p>The loop variable <code>i</code> now increases by 2 for every iteration. The last number output is <code>7</code>, 
+since 2 steps up from that is <code>9</code> which is outside the defined range, <code>1..8</code></p>
 
                     </main>
 
@@ -232,6 +280,21 @@ Trying to access the loop variable outside the <code>for</code> loop will result
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

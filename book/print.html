@@ -662,7 +662,7 @@ println(albums)
 <p>Let's examine the following code: </p>
 <pre><code class="language-kotlin">var list = listOf[&quot;Hello&quot;, &quot;Example&quot;, &quot;Test&quot;]
 
-for (i in 0..list.size){
+for (i in 0..list){
     println(list[i])
 }
 /* Prints: 
@@ -675,13 +675,246 @@ Test
 <li><code>for</code> is a keyword used to declare a for loop.</li>
 <li>We define <code>i</code> as the loop variable. This variable holds the current iteration value and can be used within the loop body.</li>
 <li>The <code>in</code> keyword is between the variable definition and the iterator.</li>
-<li>The range <code>0..list.size</code> is the for loop iterator.</li>
+<li>The range <code>0..list</code> is the for loop iterator.</li>
 </ul>
 <p>An <code>iterator</code> is an object that allows us to step through and access every individual element in a collection of values. </p>
 <p><strong>Note:</strong> It is important to note that the loop variable only exists within the loop’s code block. 
 Trying to access the loop variable outside the <code>for</code> loop will result in an error.</p>
+<h3 id="controlling-iteration"><a class="header" href="#controlling-iteration">Controlling Iteration</a></h3>
+<p>Sometimes we want to count backwards, or count by 5s, or maybe both! Using certain functions alongside or instead of the normal range operator <code>(..)</code> can enhance the iterative abilities of our <code>for</code> loops. The functions <code>downTo</code>, <code>until</code> and <code>step</code> give us more control of a range and therefore more control of our loops.</p>
+<ul>
+<li>The <code>downTo</code> function simply creates a reverse order group of values, where the starting boundary is greater than the ending boundary. To accomplish this, replace the range operator <code>(..)</code> with <code>downTo</code>:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 4 downTo 1) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 4
+i = 3
+i = 2
+i = 1
+*/
+</code></pre>
+<p>We can see in the output that the first number in i is 4 and the last is 1</p>
+<ul>
+<li>The <code>until</code> function creates an ascending range, just like the <code>(..)</code> operator, but excludes the upper boundary:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1 until 4) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 2
+i = 3
+*/
+</code></pre>
+<p>The upper boundary, 4, is not included in the output </p>
+<ul>
+<li>Up until now, each of these functions, including the range operator (..), have counted up or down by one. 
+The <code>step</code> function specifies the amount these functions count by:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1..8 step 2) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 3
+i = 5
+i = 7
+*/
+</code></pre>
+<p>The loop variable <code>i</code> now increases by 2 for every iteration. The last number output is <code>7</code>, 
+since 2 steps up from that is <code>9</code> which is outside the defined range, <code>1..8</code></p>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>A function is a named, reusable block of code that can be called and executed throughout a program.</p>
+<p>A function is declared with the <code>fun</code> keyword, a function name, parentheses containing (optional) parameters, as well as an (optional) return type.</p>
+<p>To call/invoke a function, write the name of the function followed by parentheses.</p>
+<pre><code class="language-kotlin">fun print_five() {
+  println(&quot;5&quot;)
+}
+ 
+fun main() {
+  // Function call
+  print_five() // Prints: 5
+}
+</code></pre>
+<h2 id="function-paramaters"><a class="header" href="#function-paramaters">Function Paramaters</a></h2>
+<p>In Kotlin, a parameter is a piece of data we can pass into a function when invoking it.</p>
+<p>To pass data into a function, the function’s header must include parameters that describe the name and data type of the incoming data. 
+If a function is declared with parameters, then data must be passed when the function is invoked. We can include as many parameters as needed.</p>
+<pre><code class="language-kotlin">fun birthday(name: String, age: Int) {`
+   println(&quot;Happy birthday $name! You turn $age today!&quot;)
+}
+ 
+fun main() {
+  birthday(&quot;Oscar&quot;, 26) // Prints: Happy birthday Oscar! You turn 25 today!
+  birthday(&quot;Amarah&quot;, 30) // Prints: Happy birthday Amarah! You turn 30 today!
+}
+</code></pre>
+<h2 id="default-parameters"><a class="header" href="#default-parameters">Default Parameters</a></h2>
+<p>We can give parameters a default value which provides a parameter an automatic value if no value is passed into the function when it’s invoked.</p>
+<pre><code class="language-kotlin">fun favoriteLanguage(name, language = &quot;Kotlin&quot;) {
+  println(&quot;Hello, $name. Your favorite programming language is $language&quot;)  
+}
+ 
+ 
+fun main() {
+  favoriteLanguage(&quot;Manon&quot;) 
+  // Prints: Hello, Manon. Your favorite programming language is Kotlin
+  
+  favoriteLanguage(&quot;Lee&quot;, &quot;Java&quot;) 
+  // Prints: Hello, Lee. Your favorite programming language is Java
+}
+</code></pre>
+<h2 id="named-parameters"><a class="header" href="#named-parameters">Named parameters</a></h2>
+<p>We can name our parameters when invoking a function to provide additional readability.</p>
+<p>To name a parameter, write the parameter name followed by the assignment operator <code>(=)</code> and the parameter value. 
+The parameter’s name must have the same name as the parameter in the function being called.</p>
+<p>By naming our parameters, we can place parameters in any order when the function is being invoked.</p>
+<pre><code class="language-kotlin">fun findMyAge(currentYear: Int, birthYear: Int) {
+   var myAge = currentYear - birthYear
+   println(&quot;I am $myAge years old.&quot;)
+}
+ 
+fun main() {
+  findMyAge(currentYear = 2020, birthYear = 1995)
+  // Prints: I am 25 years old.
+  findMyAge(birthYear = 1920, currentYear = 2020)
+  // Prints: I am 100 years old.
+}
+</code></pre>
+<h2 id="return-statement"><a class="header" href="#return-statement">Return Statement</a></h2>
+<p>In Kotlin, in order to return a value from a function, we must add a return statement to our function using the <code>return</code> keyword. 
+This value is then passed to where the function was invoked.</p>
+<p>If we plan to return a value from a function, we must declare the return type in the function header.</p>
+<pre><code class="language-kotlin">// Return type is declared outside the parentheses
+fun getArea(length: Int, width: Int): Int {
+  var area = length * width
+ 
+  // return statement
+  return area
+}
+ 
+fun main() {
+  var myArea = getArea(10, 8)
+  println(&quot;The area is $myArea.&quot;) // Prints: The area is 80.
+}
+</code></pre>
+<h2 id="single-expression-functions"><a class="header" href="#single-expression-functions">Single Expression Functions</a></h2>
+<p>If a function contains only a single expression, we can use a shorthand syntax to create our function.</p>
+<p>Instead of placing curly brackets after the function header to contain the function’s code block, we can use an assignment operator <code>=</code> followed by the expression being returned.</p>
+<pre><code class="language-kotlin">fun fullName(firstName: String, lastName: String) = &quot;$firstName $lastName&quot;
+ 
+fun main() {
+  println(fullName(&quot;Ariana&quot;, &quot;Ortega&quot;)) // Prints: Ariana Ortega
+  println(fullName(&quot;Kai&quot;, &quot;Gittens&quot;)) // Prints: Kai Gittens
+}
+</code></pre>
+<h2 id="function-literals"><a class="header" href="#function-literals">Function Literals</a></h2>
+<p>Function literals are unnamed functions that can be treated as expressions: we can assign them to variables, call them, pass them as parameters, and return them from a function as we could with any other value.</p>
+<p>Two types of function literals are <code>anonymous functions</code> and <code>lambda expressions</code>.</p>
+<pre><code class="language-kotlin">fun main() {
+  // Anonymous Function:
+  var getProduct = fun(num1: Int, num2: Int): Int {
+     return num1 * num2
+  }
+  println(getProduct(8, 3)) // Prints: 24
+ 
+  // Lambda Expression
+  var getDifference = { num1: Int, num2: Int -&gt; num1 - num2 }
+  println(getDifference(10, 3)) // Prints: 7
+}
+</code></pre>
 <h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<p>A class is an object-oriented concept which resembles a blueprint for individual objects. 
+A class can contain properties and functions and is defined using the <code>class</code> keyword followed by a name and optional body.</p>
+<p>If the class does not have a body, its curly braces can be omitted.</p>
+<pre><code class="language-kotlin">// A class with properties that contain default values
+class Student {
+  var name = &quot;Lucia&quot;
+  var semester = &quot;Fall&quot;
+  var gpa = 3.95
+}
+ 
+// Shorthand syntax with no class body 
+class Student 
+</code></pre>
+<h2 id="class-instances"><a class="header" href="#class-instances">Class Instances</a></h2>
+<p>A new instance of a class is created by calling the class name followed by a pair of parentheses <code>()</code> and any necessary arguments.</p>
+<p>When creating an instance of a class, we must declare a variable in which we intend to store our instance and assign it equal to the class call.
+Once the instance has been created, we can use dot syntax to access and retrieve the value of each property.</p>
+<pre><code class="language-kotlin">// Class
+class Student {
+  var name = &quot;Lucia&quot;
+  var semester = &quot;Fall&quot;
+  var gpa = 3.95
+}
+ 
+fun main() {
+  var student = Student()   // Instance
+  println(student.name)     // Prints: Lucia
+  println(student.semester) // Prints: Fall
+  println(student.gpa)      // Prints: 3.95  
+} 
+</code></pre>
+<h2 id="primary-constructor"><a class="header" href="#primary-constructor">Primary Constructor</a></h2>
+<p>A primary constructor defines each property value within a class header and allows us to then set unique values when the object is instantiated.</p>
+<p>To create a primary constructor using the shorthand syntax, we can follow the name of the class with a pair of parentheses <code>()</code> inside of which each property is defined and assigned a data type.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) 
+ 
+fun main() {
+    var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) 
+    println(student.name)     // Prints: Lucia
+    println(student.gpa)      // Prints: 3.95
+    println(student.semester) // Prints: Fall
+    println(student.estimatedGraduationYear) // Prints: 2022
+}
+</code></pre>
+<h2 id="init-blocks"><a class="header" href="#init-blocks">Init Blocks</a></h2>
+<p>The init block gets invoked with every instance that’s created and is used to add logic to the class. 
+The <code>init</code> keyword precedes any member functions and is followed by a pair of curly braces.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+ 
+  init {
+    println(&quot;$name has ${estimatedGraduationYear - 2020} years left in college.&quot;)
+  }
+}
+ 
+fun main() {
+  var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) // Prints: Lucia has 2 years left in college. 
+}
+</code></pre>
+<h2 id="member-functions"><a class="header" href="#member-functions">Member Functions</a></h2>
+<p>A function declared within a class is known as a member function of that class. 
+In order to invoke a member function, we must call the function on an instance of the class.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+ 
+  init {
+    println(&quot;$name has ${estimatedGraduationYear - 2020} years left in college.&quot;)
+  }
+ 
+  // Member Function
+  fun calculateLetterGrade(): String {
+    return when {
+      gpa &gt;= 3.0 -&gt; &quot;A&quot;
+      gpa &gt;= 2.7 -&gt; &quot;B&quot;
+      gpa &gt;= 1.7 -&gt; &quot;C&quot;
+      gpa &gt;= 1.0 -&gt; &quot;D&quot;
+      else -&gt; &quot;E&quot;
+    }
+  }
+}
+ 
+// When an instance is created and the function is called, the when expression will execute and return a letter grade
+ 
+fun main() {
+  var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) // Prints: Lucia has 2 years left in college. 
+  println(&quot;${student.name}'s letter grade is ${student.calculateLetterGrade()}.&quot;) // Prints: Lucia's letter grade is A. 
+}
+</code></pre>
 
                     </main>
 
@@ -704,6 +937,21 @@ Trying to access the loop variable outside the <code>for</code> loop will result
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
