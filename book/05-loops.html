@@ -171,6 +171,29 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
+<h2 id="for-loops"><a class="header" href="#for-loops">for Loops</a></h2>
+<p>A <code>for</code> loop is used when we know how many times we want a section of code repeated. </p>
+<p>Let's examine the following code: </p>
+<pre><code class="language-kotlin">var list = listOf[&quot;Hello&quot;, &quot;Example&quot;, &quot;Test&quot;]
+
+for (i in 0..list.size){
+    println(list[i])
+}
+/* Prints: 
+Hello
+Example
+Test 
+*/
+</code></pre>
+<ul>
+<li><code>for</code> is a keyword used to declare a for loop.</li>
+<li>We define <code>i</code> as the loop variable. This variable holds the current iteration value and can be used within the loop body.</li>
+<li>The <code>in</code> keyword is between the variable definition and the iterator.</li>
+<li>The range <code>0..list.size</code> is the for loop iterator.</li>
+</ul>
+<p>An <code>iterator</code> is an object that allows us to step through and access every individual element in a collection of values. </p>
+<p><strong>Note:</strong> It is important to note that the loop variable only exists within the loop’s code block. 
+Trying to access the loop variable outside the <code>for</code> loop will result in an error.</p>
 
                     </main>
 
