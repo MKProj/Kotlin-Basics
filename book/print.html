@@ -517,6 +517,35 @@ when (grades){
 // Prints A+ 
 </code></pre>
 <h1 id="collections"><a class="header" href="#collections">Collections</a></h1>
+<p>In Kotlin,  there is various type of collections that exist for different case usages. In this section, we 
+will be covering <code>Lists</code>, <code>Sets</code> and <code>Maps</code>. </p>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<h3 id="mutable-and-immutable-lists"><a class="header" href="#mutable-and-immutable-lists">Mutable and Immutable Lists</a></h3>
+<ul>
+<li>
+<p>An immutable list represents a group of elements with read-only operations.</p>
+<ul>
+<li>It can be declared with the term <code>listOf</code>, followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var fruits = listOf(&quot;Apples&quot;, &quot;Bananas&quot;, &quot;Oranges&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable list represents a group of ordered elements with read and write operations.</p>
+<ul>
+<li>It can be declared with the term, <code>mutableListOf</code> followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var companies = mutableListOf(&quot;Google&quot;, &quot;Tesla&quot;, &quot;Apple&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="acessing-lists-elements"><a class="header" href="#acessing-lists-elements">Acessing Lists Elements</a></h3>
+<p>In order to retrieve an element from a list, we can reference its numerical position or index using square bracket notation <code>[ ]</code>.</p>
+<p><strong>Note:</strong> The beginning index of a list starts at <code>0</code>.</p>
+<h3 id="the-size-property"><a class="header" href="#the-size-property">The Size Property</a></h3>
+<p>The <code>size</code> property returns the size of a collection of the number of elements that exists. </p>
+<pre><code class="language-kotlin">var grades = listOf(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;F&quot;)
+println(grades.size)
+// Prints 5
+</code></pre>
 <h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
