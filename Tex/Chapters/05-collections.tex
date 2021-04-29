@@ -1,0 +1,115 @@
+\chapter{Collections}
+In Kotlin, there is various type of collections that exist for different case usages. In this section, we
+will be covering \verb!Lists!, \verb!Sets! and \verb!Maps!.
+
+\section{Lists}
+\subsection{Mutable and Immutable Lists}
+\begin{itemize}
+    \item An immutable list represents a group of elements with read-only operations.
+          \begin{itemize}
+              \item It can be declared with the term \verb!listOf!, followed by a pair of parentheses containing elements that are separated by commas.
+              \item Ex. \verb!var fruits = listOf("Apples", "Bananas", "Oranges")!
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item A mutable list represents a group of ordered elements with read and write operations.
+          \begin{itemize}
+              \item It can be declared with the term, \verb!mutableListOf! followed by a pair of parentheses containing elements that are separated by commas.
+              \item Ex. \verb!var companies = mutableListOf("Google", "Tesla", "Apple")!
+          \end{itemize}
+\end{itemize}
+
+\paragraph{Accessing Lists Elements}
+In order to retrieve an element from a list, we can reference its numerical position or index using square bracket notation \verb![ ]!.
+
+\textbf{Note: }The beginning index of a list starts at \verb!0!.
+
+\paragraph{The Size Property}
+The \verb!size! property returns the size of a collection of the number of elements that exists.
+
+\begin{verbatim}
+var grades = listOf("A", "B", "C", "D", "F")
+println(grades.size)
+// Prints 5
+\end{verbatim}
+\newpage
+\subsection{List Operations}
+The list collection supports various operations in the form of built-in functions that can be performed on its elements.
+
+Some functions perform read and write operations, whereas others perform read-only operations.
+
+The functions that perform read and write operations can only be used on \verb!mutable! lists while read-only operations can be
+performed on both \verb!mutable! and \verb!immutable! lists.
+
+\begin{verbatim}
+var programming_languages = mutableListOf("Kotlin", "Java", "C++", "Rust")
+
+if (programming_languages.contains("Python") /*read only*/){
+  println("Python is pretty cool")
+} else {
+  programming_languages.add("Python") //write 
+}
+\end{verbatim}
+
+\section{Sets}
+\subsection{Immutable and Mutable Sets}
+\begin{itemize}
+    \item An immutable set represents a collection of unique elements in an unordered format whose elements cannot be changed throughout a program.
+          \begin{itemize}
+              \item It is declared with the term, \verb!setOf!, followed by a pair of parentheses,
+                    \verb!( )! holding unique values.
+              \item \verb!var origin_factions = setOf("Mythicals", "Sorcerers", "Kindgom")!
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item A mutable set represents a collection of ordered elements that possess both read and write functionalities.
+          \begin{itemize}
+              \item It is declared with the term, \verb!mutableSetOf!, followed by a pair of parantheses, \verb!( )! holding unique values.
+              \item \verb!var mkproj = mutableSetOf("Phaktionz", "Books", "UniConv", "Moka")!
+          \end{itemize}
+\end{itemize}
+
+\paragraph{Accessing Set Elements}
+Elements in a set can be accessed using the \verb!elementAt()! or \verb!elementAtOrNull()! functions.
+
+\begin{itemize}
+    \item The \verb!elementAt()! function gets appended onto a set name and returns the element at the specified position within the parentheses.
+    \item The \verb!elementAtOrNull()! function is a safer variation of the \verb!elementAt()! function
+          \begin{itemize}
+              \item Returns \verb!null! if the position is out of bounds as opposed to throwing an error.
+          \end{itemize}
+\end{itemize}
+
+\begin{verbatim}
+var example = setOf("Foo", "Bar", "Baz")
+
+println(example.elementAt(1)) // Prints Bar
+println(example.elementAt(5)) // Returns an error 
+println(example.elementAtOrNull(5)) // Prints null
+\end{verbatim}
+\newpage
+\section{Maps}
+\subsection{Immutable and Mutable Maps}
+\begin{itemize}
+    \item An immutable Map represents a collection of entries that cannot be altered throughout a program.
+          \begin{itemize}
+              \item It is declared with the term, \verb!mapOf!, followed by a pair of parentheses.
+                    \begin{itemize}
+                        \item Within the parentheses, each key should be linked to its corresponding value with the
+                              \verb!to! keyword, and each entry should be separated by a comma.
+                        \item \verb!var student = mapOf("Johnny" to 95, "Billy  to 65, "Kimmy" to 85)!
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item A mutable map represents a collection of entries that possess read and write functionalities. 
+    Entries can be added, removed, or updated in a mutable map.
+    \begin{itemize}
+        \item A mutable map can be declared with the term, \verb!mutableMapOf!, 
+        followed by a pair of parentheses holding key-value pairs.
+        \item \verb!var prices = mutableMapOf("Gum" to 1.50, "Kitkat" to 0.88, "Spinach" to 3.97)!
+    \end{itemize}
+\end{itemize}

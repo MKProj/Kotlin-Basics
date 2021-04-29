@@ -414,13 +414,13 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagd8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagd8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagk8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagk8t.tfm
-OUTPUT /home/pi/Books/Kotlin-Basics/Tex/main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/avantgar/pagd8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagd8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/avantgar/pagd8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagd8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/avantgar/pagk8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagk8r.tfm
+OUTPUT /home/pi/Books/Kotlin-Basics/Tex/main.toc
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/01-install.tex
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/01-install.tex
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Pictures/chapter_head_2.pdf
@@ -447,6 +447,10 @@ INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/04-conditionals.tex
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/04-conditionals.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT /home/pi/Books/Kotlin-Basics/Tex/Pictures/chapter_head_2.pdf
+INPUT /home/pi/Books/Kotlin-Basics/Tex/Pictures/chapter_head_2.pdf
+INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/05-collections.tex
+INPUT /home/pi/Books/Kotlin-Basics/Tex/Chapters/05-collections.tex
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Pictures/chapter_head_2.pdf
 INPUT /home/pi/Books/Kotlin-Basics/Tex/Pictures/chapter_head_2.pdf
 INPUT /home/pi/Books/Kotlin-Basics/Tex/main.aux
