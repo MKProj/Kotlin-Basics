@@ -187,7 +187,7 @@ fun main() {
 <p>In Kotlin, a parameter is a piece of data we can pass into a function when invoking it.</p>
 <p>To pass data into a function, the function’s header must include parameters that describe the name and data type of the incoming data. 
 If a function is declared with parameters, then data must be passed when the function is invoked. We can include as many parameters as needed.</p>
-<pre><code class="language-kotlin">fun birthday(name: String, age: Int) {`
+<pre><code class="language-kotlin">fun birthday(name: String, age: Int) {
    println(&quot;Happy birthday $name! You turn $age today!&quot;)
 }
  
@@ -308,21 +308,6 @@ fun main() {
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
