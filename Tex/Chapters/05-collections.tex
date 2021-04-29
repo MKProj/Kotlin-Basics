@@ -113,3 +113,45 @@ println(example.elementAtOrNull(5)) // Prints null
         \item \verb!var prices = mutableMapOf("Gum" to 1.50, "Kitkat" to 0.88, "Spinach" to 3.97)!
     \end{itemize}
 \end{itemize}
+
+\paragraph{Retrieving Map Keys and Values}
+\begin{itemize}
+    \item Keys and values within a map can be retrieved using the \verb!.keys! and \verb!.values! properties.
+    \item The \verb!.keys! property returns a list of key elements, whereas the \verb!.values! property returns a list of value elements.
+    \item To retrieve a single value associated with a key, the shorthand, \verb![key]!, syntax can be used.
+\end{itemize}
+
+\begin{verbatim}
+var albums = mapOf("2001" to "Dr Dre", "4:44" to "Jay Z", "Relapse" to "Eminem")
+
+println(albums.keys)
+// Prints ["2001", "4:44", "Relapse"]
+println(albums.values)
+// Prints ["Dr Dre", "Jay Z", "Eminem" ]
+println(albums["4:44"])
+// Prints Jay Z
+\end{verbatim}
+
+\paragraph{Adding and Removing Map Entries}
+An entry can be added to a mutable map using the \verb!put()! function. 
+Oppositely, an entry can be removed from a mutable map using the \verb!remove()! function.
+
+\begin{itemize}
+    \item The \verb!put()! function accepts a key and a value separated by a comma.
+    \item The \verb!remove()! function accepts a key and removes the entry associated with that key
+\end{itemize}
+
+\begin{verbatim}
+var albums = mutableMapOf("2001" to "Dr Dre", "4:44" to "Jay Z", "Relapse" to "Eminem")
+
+albums.put("All Eyez On Me", "2Pac")
+
+println(albums)
+// Prints: 
+// {"2001"="Dr Dre", "4:44"="Jay Z", "Relapse"="Eminem", "All Eyez On Me"="2Pac"}
+
+albums.remove("2001")
+println(albums)
+// Prints: 
+// {"4:44"="Jay Z", "Relapse"="Eminem", "All Eyez On Me"="2Pac"}
+\end{verbatim}

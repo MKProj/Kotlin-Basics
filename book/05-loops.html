@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html">Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html">Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html">Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html">Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html">Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html">Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html">Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html">Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html">Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html" class="active">Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html">Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html">Classes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html"><strong aria-hidden="true">2.</strong> Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html"><strong aria-hidden="true">3.</strong> Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html"><strong aria-hidden="true">3.1.</strong> Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html"><strong aria-hidden="true">3.3.</strong> Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html"><strong aria-hidden="true">4.</strong> Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html"><strong aria-hidden="true">4.1.</strong> Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html"><strong aria-hidden="true">5.</strong> Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html" class="active"><strong aria-hidden="true">6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html"><strong aria-hidden="true">7.</strong> Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html"><strong aria-hidden="true">8.</strong> Classes</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -280,6 +280,21 @@ since 2 steps up from that is <code>9</code> which is outside the defined range,
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

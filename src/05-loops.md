@@ -45,7 +45,7 @@ i = 2
 i = 1
 */
 ```
-We can see in the output that the first number in i is 4 and the last is 1  
+We can see in the output that the first number in `i` is 4 and the last is 1  
 
 - The `until` function creates an ascending range, just like the `(..)` operator, but excludes the upper boundary:
 ```kotlin

@@ -1,0 +1,94 @@
+\chapter{Loops}
+\section{for Loops}
+A \verb!for! loop is used when we know how many times we want a section of code repeated. 
+
+Let's examine the following code: 
+
+\begin{verbatim}
+var list = listOf["Hello", "Example", "Test"]
+
+for (i in 0..list){
+    println(list[i])
+}
+/* Prints: 
+Hello
+Example
+Test 
+*/
+\end{verbatim}
+
+\begin{itemize}
+    \item \verb!for! is a keyword used to declare a for loop.
+    \item We define \verb!i! as the loop variable. 
+    This variable holds the current iteration value and can be used within the loop body.
+    \item The \verb!in! keyword is between the variable definition and the iterator.
+    \item The range \verb!0..list! is the for loop iterator.
+\end{itemize}
+
+An \verb!iterator! is an object that allows us to step through and access every individual element in a collection of values. 
+
+\textbf{Note: } It is important to note that the loop variable only exists within the loop’s code block. 
+Trying to access the loop variable outside the \verb!for! loop will result in an error.
+\newpage
+\subsection{Controlling Iteration}
+Sometimes we want to count backwards, or count by 5s, or maybe both! Using certain functions alongside or instead of the normal 
+range operator \verb!(..)! can enhance the iterative abilities of our \verb!for! loops. The functions \verb!downTo!, \verb!until! and \verb!step! give us 
+more control of a range and therefore more control of our loops.
+
+\begin{itemize}
+    \item The \verb!downTo! function simply creates a reverse order group of values, where the starting boundary is greater than the ending boundary.
+To accomplish this, replace the range operator \verb!(..)! with \verb!downTo!:
+\end{itemize}
+
+\begin{verbatim}
+for (i in 4 downTo 1) {
+  println("i = $i")
+}
+/*
+Output: 
+i = 4
+i = 3
+i = 2
+i = 1
+*/
+\end{verbatim}
+We can see in the output that the first number in \verb!i! is 4 and the last is 1  
+
+\begin{itemize}
+    \item The \verb!until! function creates an ascending range, just like the 
+    \verb!(..)! operator, but excludes the upper boundary:
+\end{itemize}
+
+\begin{verbatim}
+for (i in 1 until 4) {
+  println("i = $i")
+}
+/*
+Output: 
+i = 1
+i = 2
+i = 3
+*/
+\end{verbatim}
+The upper boundary, 4, is not included in the output 
+
+\begin{itemize}
+    \item Up until now, each of these functions, including the range operator (..), have counted up or down by one. 
+    The \verb!step! function specifies the amount these functions count by:
+\end{itemize}
+
+\begin{verbatim}
+for (i in 1..8 step 2) {
+  println("i = $i")
+}
+/*
+Output: 
+i = 1
+i = 3
+i = 5
+i = 7
+*/
+\end{verbatim}
+
+The loop variable \verb!i! now increases by 2 for every iteration. The last number output is \verb!7!, 
+since 2 steps up from that is \verb!9! which is outside the defined range, \verb!1..8!

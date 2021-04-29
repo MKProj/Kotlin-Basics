@@ -94,4 +94,38 @@
 \contentsline {section}{\numberline {5.3}Maps}{19}{section.5.3}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.3.1}Immutable and Mutable Maps}{19}{subsection.5.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Retrieving Map Keys and Values}{19}{section*.20}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Adding and Removing Map Entries}{19}{section*.21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Loops}{21}{chapter.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}for Loops}{21}{section.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}Controlling Iteration}{22}{subsection.6.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Functions}{23}{chapter.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Function Parameters}{23}{section.7.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.2}Default Parameters}{24}{section.7.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.3}Named Parameters}{24}{section.7.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.4}Return Statement}{25}{section.7.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.5}Single Expression Functions}{25}{section.7.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.6}Function Literals}{25}{section.7.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Classes}{27}{chapter.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}Class Instances}{27}{section.8.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.2}Primary Constructor}{28}{section.8.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.3}Init Blocks}{28}{section.8.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.4}Member Functions}{29}{section.8.4}% 
 \contentsfinish 
