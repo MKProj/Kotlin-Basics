@@ -34,7 +34,7 @@
 \usepackage{booktabs} % Required for nicer horizontal rules in tables
 
 \usepackage{xcolor} % Required for specifying colors by name
-\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{purp}{RGB}{54,32,120} % Define the orange color used for highlighting throughout the book
 
 %----------------------------------------------------------------------------------------
 %	MARGINS
@@ -98,9 +98,9 @@
 \titlecontents{chapter}
 	[1.25cm] % Left indentation
 	{\addvspace{12pt}\large\sffamily\bfseries} % Spacing and font options for chapters
-	{\color{ocre!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Formatting of numbered sections of this type
-	{\color{ocre}} % Formatting of numberless sections of this type
-	{\color{ocre!60}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number
+	{\color{purp}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{purp}} % Formatting of numbered sections of this type
+	{\color{purp}} % Formatting of numberless sections of this type
+	{\color{purp}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number
 
 % Section text styling
 \titlecontents{section}
@@ -142,9 +142,9 @@
 \titlecontents{lchapter}
 	[0em] % Left indentation
 	{\addvspace{15pt}\large\sffamily\bfseries} % Spacing and font options for chapters
-	{\color{ocre}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Chapter number
+	{\color{purp}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{purp}} % Chapter number
 	{}  
-	{\color{ocre}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+	{\color{purp}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
 
 % Section text styling
 \titlecontents{lsection}
@@ -208,15 +208,15 @@
 \newtheorem{notation}{Notation}[chapter]
 
 % Boxed/framed environments
-\newtheoremstyle{ocrenumbox}% Theorem style name
+\newtheoremstyle{purpnumbox}% Theorem style name
 {0pt}% Space above
 {0pt}% Space below
 {\normalfont}% Body font
 {}% Indent amount
-{\small\bf\sffamily\color{ocre}}% Theorem head font
+{\small\bf\sffamily\color{purp}}% Theorem head font
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
-{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+{\small\sffamily\color{purp}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
 \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
 
 \newtheoremstyle{blacknumex}% Theorem style name
@@ -242,22 +242,22 @@
 \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
 
 % Non-boxed/non-framed environments
-\newtheoremstyle{ocrenum}% Theorem style name
+\newtheoremstyle{purpnum}% Theorem style name
 {5pt}% Space above
 {5pt}% Space below
 {\normalfont}% Body font
 {}% Indent amount
-{\small\bf\sffamily\color{ocre}}% Theorem head font
+{\small\bf\sffamily\color{purp}}% Theorem head font
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
-{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+{\small\sffamily\color{purp}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
 \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
 \makeatother
 
 % Defines the theorem text style for each type of theorem to one of the three styles above
 \newcounter{dummy} 
 \numberwithin{dummy}{section}
-\theoremstyle{ocrenumbox}
+\theoremstyle{purpnumbox}
 \newtheorem{theoremeT}[dummy]{Theorem}
 \newtheorem{problem}{Problem}[chapter]
 \newtheorem{exerciseT}{Exercise}[chapter]
@@ -267,7 +267,7 @@
 \newtheorem{vocabulary}{Vocabulary}[chapter]
 \newtheorem{definitionT}{Definition}[section]
 \newtheorem{corollaryT}[dummy]{Corollary}
-\theoremstyle{ocrenum}
+\theoremstyle{purpnum}
 \newtheorem{proposition}[dummy]{Proposition}
 
 %----------------------------------------------------------------------------------------
@@ -280,7 +280,7 @@
 \newmdenv[skipabove=7pt,
 skipbelow=7pt,
 backgroundcolor=black!5,
-linecolor=ocre,
+linecolor=purp,
 innerleftmargin=5pt,
 innerrightmargin=5pt,
 innertopmargin=5pt,
@@ -295,8 +295,8 @@ rightline=false,
 leftline=true,
 topline=false,
 bottomline=false,
-backgroundcolor=ocre!10,
-linecolor=ocre,
+backgroundcolor=purp!10,
+linecolor=purp,
 innerleftmargin=5pt,
 innerrightmargin=5pt,
 innertopmargin=5pt,
@@ -312,7 +312,7 @@ rightline=false,
 leftline=true,
 topline=false,
 bottomline=false,
-linecolor=ocre,
+linecolor=purp,
 innerleftmargin=5pt,
 innerrightmargin=5pt,
 innertopmargin=0pt,
@@ -340,7 +340,7 @@ innerbottommargin=5pt]{cBox}
 
 % Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
 \newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
-\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{purp}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
 \newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
 \newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}		
 \newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
@@ -354,7 +354,7 @@ innerbottommargin=5pt]{cBox}
 \leftmargin=35pt % Indentation on the left
 \rightmargin=25pt}\item\ignorespaces % Indentation on the right
 \makebox[-2.5pt]{\begin{tikzpicture}[overlay]
-\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};\end{tikzpicture}} % Orange R in a circle
+\node[draw=purp!60,line width=1pt,circle,fill=purp!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{purp}{R}};\end{tikzpicture}} % Orange R in a circle
 \advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
 
 %----------------------------------------------------------------------------------------
@@ -362,7 +362,7 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 
 \makeatletter
-\renewcommand{\@seccntformat}[1]{\llap{\textcolor{ocre}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{purp}{\csname the#1\endcsname}\hspace{1em}}}                    
 \renewcommand{\section}{\@startsection{section}{1}{\z@}
 {-4ex \@plus -1ex \@minus -.4ex}
 {1ex \@plus.2ex }
@@ -387,13 +387,13 @@ innerbottommargin=5pt]{cBox}
 % Numbered part in the table of contents
 \newcommand{\@mypartnumtocformat}[2]{%
 	\setlength\fboxsep{0pt}%
-	\noindent\colorbox{ocre!20}{\strut\parbox[c][.7cm]{\ecart}{\color{ocre!70}\Large\sffamily\bfseries\centering#1}}\hskip\esp\colorbox{ocre!40}{\strut\parbox[c][.7cm]{\linewidth-\ecart-\esp}{\Large\sffamily\centering#2}}%
+	\noindent\colorbox{purp!20}{\strut\parbox[c][.7cm]{\ecart}{\color{purp!70}\Large\sffamily\bfseries\centering#1}}\hskip\esp\colorbox{purp!40}{\strut\parbox[c][.7cm]{\linewidth-\ecart-\esp}{\Large\sffamily\centering#2}}%
 }
 
 % Unnumbered part in the table of contents
 \newcommand{\@myparttocformat}[1]{%
 	\setlength\fboxsep{0pt}%
-	\noindent\colorbox{ocre!40}{\strut\parbox[c][.7cm]{\linewidth}{\Large\sffamily\centering#1}}%
+	\noindent\colorbox{purp!40}{\strut\parbox[c][.7cm]{\linewidth}{\Large\sffamily\centering#1}}%
 }
 
 \newlength\esp
@@ -414,8 +414,8 @@ innerbottommargin=5pt]{cBox}
 {\thispagestyle{empty}%
 \begin{tikzpicture}[remember picture,overlay]%
 \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%	
-\fill[ocre!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
-\node[anchor=north] at (4cm,-3.25cm){\color{ocre!40}\fontsize{220}{100}\sffamily\bfseries\thepart}; 
+\fill[purp!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+\node[anchor=north] at (4cm,-3.25cm){\color{purp!40}\fontsize{220}{100}\sffamily\bfseries\thepart}; 
 \node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{
 \printcontents{l}{0}{\setcounter{tocdepth}{1}}% The depth to which the Part mini table of contents displays headings; 0 for chapters only, 1 for chapters and sections and 2 for chapters, sections and subsections
 }};
@@ -429,13 +429,13 @@ innerbottommargin=5pt]{cBox}
 {\thispagestyle{empty}%
 \begin{tikzpicture}[remember picture,overlay]%
 \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%	
-\fill[ocre!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+\fill[purp!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
 \node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#1}};
 \end{tikzpicture}};
 \end{tikzpicture}}
 \addcontentsline{toc}{part}{\texorpdfstring{%
 \setlength\fboxsep{0pt}%
-\noindent\protect\colorbox{ocre!40}{\strut\protect\parbox[c][.7cm]{\linewidth}{\Large\sffamily\protect\centering #1\quad\mbox{}}}}{#1}}%
+\noindent\protect\colorbox{purp!40}{\strut\protect\parbox[c][.7cm]{\linewidth}{\Large\sffamily\protect\centering #1\quad\mbox{}}}}{#1}}%
 \@endpart}
 \def\@endpart{\vfil\newpage
 \if@twoside
@@ -467,7 +467,7 @@ innerbottommargin=5pt]{cBox}
 \node at (current page.north west)
 {\begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
-\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=purp,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
 \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter\autodot~#1\strut};
 \end{tikzpicture}};
 \end{tikzpicture}
@@ -476,7 +476,7 @@ innerbottommargin=5pt]{cBox}
 \node at (current page.north west)
 {\begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
-\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=purp,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
 \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}#1\strut};
 \end{tikzpicture}};
 \end{tikzpicture}
@@ -489,7 +489,7 @@ innerbottommargin=5pt]{cBox}
 \node at (current page.north west)
 {\begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
-\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=purp,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
 \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}#1\strut};
 \end{tikzpicture}};
 \end{tikzpicture}
@@ -501,7 +501,7 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 
 \usepackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=ocre,bookmarks=true,bookmarksopen=false}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=purp,bookmarks=true,bookmarksopen=false}
 
 \usepackage{bookmark}
 \bookmarksetup{
@@ -512,7 +512,7 @@ addtohook={%
 \bookmarksetup{bold}%
 \fi
 \ifnum\bookmarkget{level}=-1 % part
-\bookmarksetup{color=ocre,bold}%
+\bookmarksetup{color=purp,bold}%
 \fi
 }
 }
