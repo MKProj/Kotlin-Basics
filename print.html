@@ -1,0 +1,995 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kotlin Basics</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html"><strong aria-hidden="true">2.</strong> Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html"><strong aria-hidden="true">3.</strong> Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html"><strong aria-hidden="true">3.1.</strong> Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html"><strong aria-hidden="true">3.3.</strong> Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html"><strong aria-hidden="true">4.</strong> Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html"><strong aria-hidden="true">4.1.</strong> Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html"><strong aria-hidden="true">5.</strong> Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html"><strong aria-hidden="true">6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html"><strong aria-hidden="true">7.</strong> Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html"><strong aria-hidden="true">8.</strong> Classes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Kotlin Basics</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/MKProj/Kotlin-Basics/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>Kotlin is a statically typed, general purpose programming language developed by JetBrains. Kotlin is 
+designed to work alongside Java, and due to it's type inference, it's code can be a lot more concise and 
+easier to read. </p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>You can install the Kotlin Compiler manually from it's <a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.32">Github Releases</a></p>
+<h3 id="mac-os-homebrew"><a class="header" href="#mac-os-homebrew">Mac OS Homebrew</a></h3>
+<p>To install on Mac OS, you may also choose to install the Kotlin compiler via Homebrew: </p>
+<pre><code class="language-bash">$ brew update
+$ brew install kotlin
+</code></pre>
+<h3 id="linux-snap"><a class="header" href="#linux-snap">Linux Snap</a></h3>
+<p>To install on a Linux Distribution, you may install via Snap: </p>
+<pre><code class="language-bash">$ sudo snap install --classic kotlin
+</code></pre>
+<h2 id="compile"><a class="header" href="#compile">Compile</a></h2>
+<p>To Compile a Kotlin <code>.kt</code> program, you must first compile it using the Kotlin Compiler to produce a Java <code>.jar</code> file: </p>
+<pre><code class="language-bash"># We will be compile an example test.kt program
+$ kotlinc hello.kt -include-runtime -d hello.jar
+# -include-runtime makes the jar file self-contained and runnable 
+# -d is the output directory option followed by the output file
+# Run kotlinc -help for more options
+</code></pre>
+<p>To run the program use java: </p>
+<pre><code class="language-bash">$ java -jar hello.jar
+</code></pre>
+<p>Now that you know how to compile and run the program, let's proceed to the next section!</p>
+<h1 id="hello-world-kotlin"><a class="header" href="#hello-world-kotlin">Hello World Kotlin!</a></h1>
+<p>To explain this section, we will be going line by line of the different parts of our program: </p>
+<pre><code class="language-kotlin">// examples/01-hello.kt
+fun main(){
+    // Our program is very simple and is aimed to say hello world 
+    /* 
+    We will run each word of &quot;Hello World Kotlin!&quot; in seperate println 
+    so we can show the order of execution. 
+    */
+    println(&quot;Hello&quot;)
+    println(&quot;World&quot;)
+    println(&quot;Kotlin!&quot;)
+}
+</code></pre>
+<h2 id="main-function"><a class="header" href="#main-function">Main Function</a></h2>
+<p>You can see at the beginning of our program is <code>fun main(){}</code>, the main function is the starting point 
+of which the Kotlin Program executes the code. For an executable program, a main function is required for the
+Kotlin Program. </p>
+<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
+<p>Comments are used for the programmer and not for the actual execution of the program. It is typically used 
+to document and jot ideas down on the program, and is ignored by the compiler. There is two different type of 
+comments, there is <code>//</code> which is a single line comment and <code>\* */</code> which is multi-line comments that contains comments 
+in between <code>\*</code> and <code>*/</code>. </p>
+<h2 id="print-statements"><a class="header" href="#print-statements">Print Statements</a></h2>
+<p>A print statement is a way to output values onto the console, and there is two different print statements that exist.</p>
+<ul>
+<li><code>println()</code> : This will create a new line after outputting </li>
+<li><code>print()</code> : This will only output <strong>(not create a new line)</strong></li>
+</ul>
+<p>Now let's Compile and Run: </p>
+<pre><code class="language-bash"># If using this repo, cd examples
+$ kotlinc 01-hello.kt -include-runtime -d 01-hello.jar 
+$ ls 
+01-hello.jar  01-hello.kt
+$ java -jar 01-hello.jar 
+Hello
+World
+Kotlin!
+</code></pre>
+<h1 id="data-types"><a class="header" href="#data-types">Data Types</a></h1>
+<p>We will begin this section off by disecting this example program that contains most topics that will be discussed: </p>
+<pre><code class="language-kotlin">fun main(){
+    /*
+     Our goal is to be able to have variables that 
+     calculate various geometric areas
+     */ 
+
+    // An immutable variable for the value of pi
+    val pi = 3.14159
+
+    var radius = 10.0
+    var area = pi * radius // Circle 
+
+    //Since we will be using the area statement a lot
+    //it's good to make it a variables 
+
+    var stm = &quot;The area of this &quot;
+    var shape = &quot;circle&quot;
+
+    println(stm + shape + &quot; is $area&quot;) // String Concetation + Template 
+
+    // Now let's say we want to find the area and volume of a square 
+    var length = 56.21
+
+    area = Math.pow(length, 2.00) // Will square the length
+    var volume = Math.pow(length, 3.00) // Will cube the length
+
+    // Now to prepare this statement 
+    // However I want each beginning letter of each word capatalized 
+
+    shape = &quot;square&quot;
+    stm = stm + shape + &quot; is $area&quot; + &quot;\nThe volume of this &quot; + shape + &quot; is $volume&quot;
+    println(stm.capitalize())
+
+}
+</code></pre>
+<h1 id="mutable--immutable-variables"><a class="header" href="#mutable--immutable-variables">Mutable &amp; Immutable Variables</a></h1>
+<p>Variables are used in a program to store data, and in Kotlin there is two different ways to declare a variable, 
+one being <code>var</code> which is for mutable variables, and the other <code>val</code> being for immutable. Now what is the difference between 
+mutable and immutable, well the difference is between being able to be reassigned. A mutable variable is a variable that can be 
+reassigned any amount of times in a program, while a immutable cannot be reassigned a value once it is given one.</p>
+<p>You can see this in the program in the use case of <code>val pi = 3.14159</code> where we don't want <code>pi</code> to ever change. You 
+can see a few of our varaibles were reassigned, such as <code>shape</code>, <code>area</code>, etc.</p>
+<h2 id="type-inference"><a class="header" href="#type-inference">Type Inference</a></h2>
+<p>If you're coming from Java to Kotlin, you must've been being so confused by the no semi colons, or the fact that when you declare a
+variable, you don't need to provide a type with it. This is what Kotlin means with type inference, where the Kotlin compiler at 
+compiling time can infer what data type each varaible is.</p>
+<p>A nice way to look at Kotlin's type inference is to compare declaring a variable in Kotlin vs Java: </p>
+<table><thead><tr><th>Java</th><th>Kotlin</th></tr></thead><tbody>
+<tr><td><code>double num_double = 67.89;</code></td><td><code>var num_double = 67.89</code></td></tr>
+</tbody></table>
+<p>In Java a data type must be declared explicitly while in Kotlin, the type is implicitly inferred. </p>
+<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<p>Strings are essentially an array of characters, and in Java is not considered to be a primitive type, 
+however, Strings do have useful builtin properties that are good to take advantage of. </p>
+<p>Let's first talk about <code>String Concetation</code>, and we have seen it in a few times, and a good example to look at is this:</p>
+<pre><code>stm = stm + shape + &quot; is $area&quot; + &quot;\nThe volume of this &quot; + shape + &quot; is $volume&quot;
+</code></pre>
+<p>String Concetation is to combine Strings together with the <code>+</code> operator, and as you can see, it was useful for formatting 
+our statement with the various variables we had with us. </p>
+<p>Next is <code>String Templates</code>, which is also used in our example is useful to have variables in a String with <code>$variable</code> inside 
+the String to cleanly write the strings without needing to concetate a lot.</p>
+<p>In the ending of the program, we use a builtin String function called <code>.capatilize()</code> which served our purpose to capatalize 
+each word in a String. There is also <code>.length()</code> which returns the number of characters in a String. It is a good idea to explore 
+the various String properties that Kotlin offers. </p>
+<h2 id="character-escape-sequences"><a class="header" href="#character-escape-sequences">Character Escape Sequences</a></h2>
+<p>Character escape sequences consist of a backslash and character and are used to format text.</p>
+<ul>
+<li>\n Inserts a new line</li>
+<li>\t Inserts a tab</li>
+<li>\r Inserts a carriage return</li>
+<li>\' Inserts a single quote</li>
+<li>\&quot; Inserts a double quote</li>
+<li>\\ Inserts a backslash</li>
+<li>\$ Inserts the dollar symbol</li>
+</ul>
+<h1 id="math"><a class="header" href="#math">Math</a></h1>
+<h2 id="arithmetic-operators"><a class="header" href="#arithmetic-operators">Arithmetic Operators</a></h2>
+<p>Kotlin includes the following arithmetic operators: </p>
+<ul>
+<li><code>+</code> addition</li>
+<li><code>-</code> subtraction </li>
+<li><code>*</code> multiplication </li>
+<li><code>/</code> division </li>
+<li><code>%</code> modulus </li>
+</ul>
+<h2 id="order-of-operations"><a class="header" href="#order-of-operations">Order of Operations</a></h2>
+<p>The order of operations for compound arithmetic expressions is as follows:</p>
+<ol>
+<li>Parentheses</li>
+<li>Multiplication</li>
+<li>Division</li>
+<li>Modulus</li>
+<li>Addition</li>
+<li>Subtraction</li>
+</ol>
+<p>When an expression contains operations such as multiplication and division or addition and 
+subtraction side by side, the compiler will evaluate the expression in a left to right order.</p>
+<h2 id="augmented-assignment-operators"><a class="header" href="#augmented-assignment-operators">Augmented Assignment Operators</a></h2>
+<p>An augmented assignment operator includes a single arithmetic and assignment operator used to calculate and reassign a value in one step.</p>
+<pre><code class="language-kotlin">var sum = 10
+var num = 7
+
+sum += num // 10 + 7
+
+</code></pre>
+<h2 id="increment-and-decrement-operators"><a class="header" href="#increment-and-decrement-operators">Increment and Decrement Operators</a></h2>
+<p>Increment and decrement operators provide a shorthand syntax for adding or subtracting 1 from a value. 
+An increment operator consists of two consecutive plus symbols, <code>++</code>, meanwhile a decrement operator consists of two consecutive minus symbols, <code>--</code>.</p>
+<pre><code class="language-kotlin">var num = 78
+
+num++ //79
+num-- //78
+
+</code></pre>
+<p><em>The Increment Operator is commonly used in loops(Section 5)</em></p>
+<h2 id="the-math-library"><a class="header" href="#the-math-library">The Math Library</a></h2>
+<p>The Math library, inherited from Java, contains various mathematical functions that can be used within a Kotlin program.</p>
+<pre><code class="language-kotlin">Math.pow(2.0, 3.0)  // 8.0
+Math.min(6, 9)      // 6 
+Math.max(10, 12)    // 12
+Math.round(13.7)    // 14
+</code></pre>
+<h1 id="conditional-expressions"><a class="header" href="#conditional-expressions">Conditional Expressions</a></h1>
+<h2 id="if-statements"><a class="header" href="#if-statements">If Statements</a></h2>
+<p>An <code>if</code> statement is used to execute a section of code if an expression results to <code>true</code>. A great way to look at this is an example: </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 5) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> is indeed equal to 5, then the program will execute <code>println(&quot;True!&quot;)</code>, however, let's say we had, </p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+}
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, the expression results to <code>false</code>, so the program doesn't print anything. </p>
+<h2 id="else-statements"><a class="header" href="#else-statements">Else Statements</a></h2>
+<p>An <code>else</code> statement is used to execute a section of code if an expression results to <code>false</code>. Let's fix our previous example 
+a bit to include an <code>else</code> statement:</p>
+<pre><code class="language-kotlin">var a = 5
+
+if (a == 6) {
+    println(&quot;True!&quot;)
+} else {
+    println(&quot;False!&quot;)
+}
+
+</code></pre>
+<p>Since <code>a</code> doesn't equal to 6, it follows the <code>else</code> statement, and executes <code>println(&quot;False!&quot;)</code>.</p>
+<h2 id="else-if-statements"><a class="header" href="#else-if-statements">Else-If Statements</a></h2>
+<p>An <code>else-if</code> expression allows for more conditions to be evaluated within an <code>if/else</code> expression.</p>
+<p><strong>Note:</strong> You can use multiple else-if expressions as long as they appear after the if expression and before the else expression.</p>
+<pre><code class="language-kotlin">var num = 8 
+
+if (num &gt; 8){
+    println(num)
+} else if (num == 8){
+    println(num++)
+} else {
+    println(num--)
+}
+// Prints 9
+</code></pre>
+<h2 id="nested-conditionals"><a class="header" href="#nested-conditionals">Nested Conditionals</a></h2>
+<p>A nested conditional is a conditional statement within another conditional statement. Essentially an <code>if</code> statement inside an <code>if</code> statement. </p>
+<pre><code class="language-kotlin">var foo = true 
+var bar = true 
+
+if (foo){
+    println(&quot;FOO!&quot;)
+    if (bar){
+        println(&quot;BAR!&quot;)
+    }
+} else {
+    println(&quot;No Foo or Bar for you&quot;)
+}
+/* 
+Prints: 
+FOO!
+BAR!
+*/
+</code></pre>
+<h2 id="when-statements"><a class="header" href="#when-statements">When Statements</a></h2>
+<p>After a while you may get sick of a huge tree of <code>else if</code> statements, so any better option? The <code>when</code> statement is useful to 
+execute code depending on the value of the expression. </p>
+<pre><code class="language-kotlin">var grade = &quot;F&quot;
+
+when (grade){
+    &quot;A&quot; -&gt; println(&quot;Excellent&quot;)
+    &quot;B&quot; -&gt; println(&quot;Okay&quot;)
+    &quot;C&quot; -&gt; println(&quot;Bad&quot;)
+    &quot;D&quot; -&gt; println(&quot;Terrible&quot;)
+    else -&gt; println(&quot;FAIL&quot;)
+}
+// Prints FAIL
+</code></pre>
+<h1 id="conditional-operators"><a class="header" href="#conditional-operators">Conditional Operators</a></h1>
+<h2 id="comparison-operators"><a class="header" href="#comparison-operators">Comparison Operators</a></h2>
+<p>Comparison operators are symbols that are used to compare two values in order to return a result of <code>true</code> or <code>false</code>.</p>
+<p>The comparison operators include the following: </p>
+<ul>
+<li><code>&lt;</code> less than </li>
+<li><code>&gt;</code> greater than</li>
+<li><code>&lt;=</code> less than or equal to </li>
+<li><code>&gt;=</code> greater than or equal to </li>
+</ul>
+<pre><code class="language-kotlin">var Khloe = 19
+var Zane = 18
+var Nimu = 20
+
+Khloe &gt; Zane //true 
+Zane &lt; Nimu // true 
+Khloe &gt;= Nimu // false 
+Nimu &lt;= Zane // false
+</code></pre>
+<h2 id="logic-operators"><a class="header" href="#logic-operators">Logic Operators</a></h2>
+<p>Logical operators are symbols used to evaluate the relationship between two or more Boolean expressions in order to return a <code>true</code> or <code>false</code> value.</p>
+<p>The logic operators include the following:</p>
+<ul>
+<li><code>!</code> NOT</li>
+<li><code>&amp;&amp;</code> AND</li>
+<li><code>||</code> OR</li>
+</ul>
+<h3 id="-not-operator"><a class="header" href="#-not-operator">&quot;!&quot; NOT Operator</a></h3>
+<p>The NOT operator evaluates a boolean expression and return it's opposite value <code>(true -&gt; false)</code>. </p>
+<pre><code class="language-kotlin">var exp = true 
+println(!exp)
+// Prints false 
+</code></pre>
+<h3 id="and-operator"><a class="header" href="#and-operator">&quot;&amp;&amp;&quot; AND Operator</a></h3>
+<p>The AND operator only evaluates to <code>true</code> if both expressions it's evaluating results to <code>true</code>. </p>
+<pre><code class="language-kotlin">if (4 &lt; 5 &amp;&amp; 6 &gt; 3){ //Both expressions are true 
+    println(&quot;True&quot;)
+} else {
+    println(&quot;False&quot;)
+}
+// Prints true 
+</code></pre>
+<h3 id="-or-operator"><a class="header" href="#-or-operator">&quot;||&quot; OR Operator</a></h3>
+<p>The OR operator only evaluates to <code>true</code> if one of the expressions result to <code>true</code>. </p>
+<pre><code class="language-kotlin">if (1.2 &lt; 9.8 || 5 &gt; 9){ // One results to true 
+    println(&quot;True&quot;)
+} else {
+    println(&quot;False&quot;)
+}
+//Prints True
+</code></pre>
+<h3 id="order-of-evaluation"><a class="header" href="#order-of-evaluation">Order of Evaluation</a></h3>
+<p>The order of evaluation when using multiple logical operators in a single Boolean expression is:</p>
+<ol>
+<li>Expressions placed in parentheses</li>
+<li>NOT(<code>!</code>) operator</li>
+<li>AND(<code>&amp;&amp;</code>) operator</li>
+<li>OR(<code>||</code>) operator</li>
+</ol>
+<pre><code class="language-kotlin">
+!true || (true &amp;&amp; false) // false
+
+</code></pre>
+<h3 id="the-range-operator"><a class="header" href="#the-range-operator">The Range Operator</a></h3>
+<p>The range operator (<code>..</code>) is used to create a succession of number or character values.</p>
+<pre><code class="language-kotlin">var grades = 90
+
+when (grades){
+    90..101 -&gt; println(&quot;A+&quot;)
+    80..90 -&gt;  println(&quot;A&quot;)
+    .
+    .
+    .
+    else -&gt; println(&quot;F&quot;)
+}
+// Prints A+ 
+</code></pre>
+<h1 id="collections"><a class="header" href="#collections">Collections</a></h1>
+<p>In Kotlin,  there is various type of collections that exist for different case usages. In this section, we 
+will be covering <code>Lists</code>, <code>Sets</code> and <code>Maps</code>. </p>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<h3 id="mutable-and-immutable-lists"><a class="header" href="#mutable-and-immutable-lists">Mutable and Immutable Lists</a></h3>
+<ul>
+<li>
+<p>An immutable list represents a group of elements with read-only operations.</p>
+<ul>
+<li>It can be declared with the term <code>listOf</code>, followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var fruits = listOf(&quot;Apples&quot;, &quot;Bananas&quot;, &quot;Oranges&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable list represents a group of ordered elements with read and write operations.</p>
+<ul>
+<li>It can be declared with the term, <code>mutableListOf</code> followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var companies = mutableListOf(&quot;Google&quot;, &quot;Tesla&quot;, &quot;Apple&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="acessing-lists-elements"><a class="header" href="#acessing-lists-elements">Acessing Lists Elements</a></h3>
+<p>In order to retrieve an element from a list, we can reference its numerical position or index using square bracket notation <code>[ ]</code>.</p>
+<p><strong>Note:</strong> The beginning index of a list starts at <code>0</code>.</p>
+<h3 id="the-size-property"><a class="header" href="#the-size-property">The Size Property</a></h3>
+<p>The <code>size</code> property returns the size of a collection of the number of elements that exists. </p>
+<pre><code class="language-kotlin">var grades = listOf(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;F&quot;)
+println(grades.size)
+// Prints 5
+</code></pre>
+<h3 id="list-operations"><a class="header" href="#list-operations">List Operations</a></h3>
+<p>The list collection supports various operations in the form of built-in functions that can be performed on its elements.</p>
+<p>Some functions perform read and write operations, whereas others perform read-only operations.</p>
+<p>The functions that perform read and write operations can only be used on <code>mutable</code> lists while read-only operations can be 
+performed on both <code>mutable</code> and <code>immutable</code> lists.</p>
+<pre><code class="language-kotlin">var programming_languages = mutableListOf(&quot;Kotlin&quot;, &quot;Java&quot;, &quot;C++&quot;, &quot;Rust&quot;)
+
+if (programming_languages.contains(&quot;Python&quot;) /*read only*/){
+  println(&quot;Python is pretty cool&quot;)
+} else {
+  programming_languages.add(&quot;Python&quot;) //write 
+}
+</code></pre>
+<h2 id="sets"><a class="header" href="#sets">Sets</a></h2>
+<h3 id="immutable-and-mutable-sets"><a class="header" href="#immutable-and-mutable-sets">Immutable and Mutable Sets</a></h3>
+<ul>
+<li>
+<p>An immutable set represents a collection of unique elements in an unordered format whose elements cannot be changed throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>setOf</code>, followed by a pair of parentheses, <code>( )</code> holding unique values.</li>
+<li><code>var origin_factions = setOf(&quot;Mythicals&quot;, &quot;Sorcerers&quot;, &quot;Kindgom&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable set represents a collection of ordered elements that possess both read and write functionalities.</p>
+<ul>
+<li>It is declared with the term, <code>mutableSetOf</code>, followed by a pair of parantheses, <code>( )</code> holding unique values. </li>
+<li><code>var mkproj_projects = mutableSetOf(&quot;Phaktionz&quot;, &quot;Books&quot;, &quot;UniConv&quot;, &quot;Moka&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="accessing-set-elements"><a class="header" href="#accessing-set-elements">Accessing Set Elements</a></h3>
+<p>Elements in a set can be accessed using the <code>elementAt()</code> or <code>elementAtOrNull()</code> functions.</p>
+<ul>
+<li>
+<p>The <code>elementAt()</code> function gets appended onto a set name and returns the element at the specified position within the parentheses.</p>
+</li>
+<li>
+<p>The <code>elementAtOrNull()</code> function is a safer variation of the <code>elementAt()</code> function</p>
+<ul>
+<li>Returns <code>null</code> if the position is out of bounds as opposed to throwing an error.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">var example = setOf(&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;)
+
+println(example.elementAt(1)) // Prints Bar
+println(example.elementAt(5)) // Returns an error 
+println(example.elementAtOrNull(5)) // Prints null
+</code></pre>
+<h2 id="maps"><a class="header" href="#maps">Maps</a></h2>
+<h3 id="immutable-and-mutable-maps"><a class="header" href="#immutable-and-mutable-maps">Immutable and Mutable Maps</a></h3>
+<ul>
+<li>
+<p>An immutable Map represents a collection of entries that cannot be altered throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>mapOf</code>, followed by a pair of parentheses. 
+<ul>
+<li>Within the parentheses, each key should be linked to its corresponding value with the <code>to</code> keyword, and each entry should be separated by a comma.</li>
+<li><code>var student_records = mapOf(&quot;Johnny&quot; to 95, &quot;Billy  to 65, &quot;Kimmy&quot; to 85)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>A mutable map represents a collection of entries that possess read and write functionalities. Entries can be added, removed, or updated in a mutable map.</p>
+<ul>
+<li>A mutable map can be declared with the term, <code>mutableMapOf</code>, followed by a pair of parentheses holding key-value pairs.</li>
+<li><code>var prices = mutableMapOf(&quot;Gum&quot; to 1.50, &quot;Bananas / kg&quot; to 0.88, &quot;Blueberries&quot; to 3.97)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="retrieving-map-keys-and-values"><a class="header" href="#retrieving-map-keys-and-values">Retrieving Map Keys and Values</a></h3>
+<ul>
+<li>Keys and values within a map can be retrieved using the <code>.keys</code> and <code>.values</code> properties.</li>
+<li>The <code>.keys</code> property returns a list of key elements, whereas the <code>.values</code> property returns a list of value elements.</li>
+<li>To retrieve a single value associated with a key, the shorthand, <code>[key]</code>, syntax can be used.</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+println(albums.keys)
+// Prints [&quot;The Chronics&quot;, &quot;The Blueprint&quot;, &quot;Marshall Mathers LP&quot;]
+println(albums.values)
+// Prints [&quot;Dr Dre&quot;, &quot;Jay Z&quot;, &quot;Eminem&quot; ]
+println(albums[&quot;The Blueprint&quot;])
+// Prints Jay Z
+</code></pre>
+<h3 id="adding-and-removing-map-entries"><a class="header" href="#adding-and-removing-map-entries">Adding and Removing Map Entries</a></h3>
+<p>An entry can be added to a mutable map using the <code>put()</code> function. 
+Oppositely, an entry can be removed from a mutable map using the <code>remove()</code> function.</p>
+<ul>
+<li>
+<p>The <code>put()</code> function accepts a key and a value separated by a comma.</p>
+</li>
+<li>
+<p>The <code>remove()</code> function accepts a key and removes the entry associated with that key</p>
+</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mutableMapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+albums.put(&quot;All Eyez On Me&quot;, &quot;2Pac&quot;)
+
+println(albums)
+// Prints {&quot;The Chronics&quot;=&quot;Dr Dre&quot;, &quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+albums.remove(&quot;The Chronics&quot;)
+println(albums)
+// Prints {&quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+</code></pre>
+<h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
+<h2 id="for-loops"><a class="header" href="#for-loops">for Loops</a></h2>
+<p>A <code>for</code> loop is used when we know how many times we want a section of code repeated. </p>
+<p>Let's examine the following code: </p>
+<pre><code class="language-kotlin">var list = listOf[&quot;Hello&quot;, &quot;Example&quot;, &quot;Test&quot;]
+
+for (i in 0..list){
+    println(list[i])
+}
+/* Prints: 
+Hello
+Example
+Test 
+*/
+</code></pre>
+<ul>
+<li><code>for</code> is a keyword used to declare a for loop.</li>
+<li>We define <code>i</code> as the loop variable. This variable holds the current iteration value and can be used within the loop body.</li>
+<li>The <code>in</code> keyword is between the variable definition and the iterator.</li>
+<li>The range <code>0..list</code> is the for loop iterator.</li>
+</ul>
+<p>An <code>iterator</code> is an object that allows us to step through and access every individual element in a collection of values. </p>
+<p><strong>Note:</strong> It is important to note that the loop variable only exists within the loop’s code block. 
+Trying to access the loop variable outside the <code>for</code> loop will result in an error.</p>
+<h3 id="controlling-iteration"><a class="header" href="#controlling-iteration">Controlling Iteration</a></h3>
+<p>Sometimes we want to count backwards, or count by 5s, or maybe both! Using certain functions alongside or instead of the normal range operator <code>(..)</code> can enhance the iterative abilities of our <code>for</code> loops. The functions <code>downTo</code>, <code>until</code> and <code>step</code> give us more control of a range and therefore more control of our loops.</p>
+<ul>
+<li>The <code>downTo</code> function simply creates a reverse order group of values, where the starting boundary is greater than the ending boundary. To accomplish this, replace the range operator <code>(..)</code> with <code>downTo</code>:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 4 downTo 1) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 4
+i = 3
+i = 2
+i = 1
+*/
+</code></pre>
+<p>We can see in the output that the first number in <code>i</code> is 4 and the last is 1</p>
+<ul>
+<li>The <code>until</code> function creates an ascending range, just like the <code>(..)</code> operator, but excludes the upper boundary:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1 until 4) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 2
+i = 3
+*/
+</code></pre>
+<p>The upper boundary, 4, is not included in the output </p>
+<ul>
+<li>Up until now, each of these functions, including the range operator (..), have counted up or down by one. 
+The <code>step</code> function specifies the amount these functions count by:</li>
+</ul>
+<pre><code class="language-kotlin">for (i in 1..8 step 2) {
+  println(&quot;i = $i&quot;)
+}
+/*
+Output: 
+i = 1
+i = 3
+i = 5
+i = 7
+*/
+</code></pre>
+<p>The loop variable <code>i</code> now increases by 2 for every iteration. The last number output is <code>7</code>, 
+since 2 steps up from that is <code>9</code> which is outside the defined range, <code>1..8</code></p>
+<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>A function is a named, reusable block of code that can be called and executed throughout a program.</p>
+<p>A function is declared with the <code>fun</code> keyword, a function name, parentheses containing (optional) parameters, as well as an (optional) return type.</p>
+<p>To call/invoke a function, write the name of the function followed by parentheses.</p>
+<pre><code class="language-kotlin">fun print_five() {
+  println(&quot;5&quot;)
+}
+ 
+fun main() {
+  // Function call
+  print_five() // Prints: 5
+}
+</code></pre>
+<h2 id="function-paramaters"><a class="header" href="#function-paramaters">Function Paramaters</a></h2>
+<p>In Kotlin, a parameter is a piece of data we can pass into a function when invoking it.</p>
+<p>To pass data into a function, the function’s header must include parameters that describe the name and data type of the incoming data. 
+If a function is declared with parameters, then data must be passed when the function is invoked. We can include as many parameters as needed.</p>
+<pre><code class="language-kotlin">fun birthday(name: String, age: Int) {
+   println(&quot;Happy birthday $name! You turn $age today!&quot;)
+}
+ 
+fun main() {
+  birthday(&quot;Oscar&quot;, 26) // Prints: Happy birthday Oscar! You turn 25 today!
+  birthday(&quot;Amarah&quot;, 30) // Prints: Happy birthday Amarah! You turn 30 today!
+}
+</code></pre>
+<h2 id="default-parameters"><a class="header" href="#default-parameters">Default Parameters</a></h2>
+<p>We can give parameters a default value which provides a parameter an automatic value if no value is passed into the function when it’s invoked.</p>
+<pre><code class="language-kotlin">fun favoriteLanguage(name, language = &quot;Kotlin&quot;) {
+  println(&quot;Hello, $name. Your favorite programming language is $language&quot;)  
+}
+ 
+ 
+fun main() {
+  favoriteLanguage(&quot;Manon&quot;) 
+  // Prints: Hello, Manon. Your favorite programming language is Kotlin
+  
+  favoriteLanguage(&quot;Lee&quot;, &quot;Java&quot;) 
+  // Prints: Hello, Lee. Your favorite programming language is Java
+}
+</code></pre>
+<h2 id="named-parameters"><a class="header" href="#named-parameters">Named parameters</a></h2>
+<p>We can name our parameters when invoking a function to provide additional readability.</p>
+<p>To name a parameter, write the parameter name followed by the assignment operator <code>(=)</code> and the parameter value. 
+The parameter’s name must have the same name as the parameter in the function being called.</p>
+<p>By naming our parameters, we can place parameters in any order when the function is being invoked.</p>
+<pre><code class="language-kotlin">fun findMyAge(currentYear: Int, birthYear: Int) {
+   var myAge = currentYear - birthYear
+   println(&quot;I am $myAge years old.&quot;)
+}
+ 
+fun main() {
+  findMyAge(currentYear = 2020, birthYear = 1995)
+  // Prints: I am 25 years old.
+  findMyAge(birthYear = 1920, currentYear = 2020)
+  // Prints: I am 100 years old.
+}
+</code></pre>
+<h2 id="return-statement"><a class="header" href="#return-statement">Return Statement</a></h2>
+<p>In Kotlin, in order to return a value from a function, we must add a return statement to our function using the <code>return</code> keyword. 
+This value is then passed to where the function was invoked.</p>
+<p>If we plan to return a value from a function, we must declare the return type in the function header.</p>
+<pre><code class="language-kotlin">// Return type is declared outside the parentheses
+fun getArea(length: Int, width: Int): Int {
+  var area = length * width
+ 
+  // return statement
+  return area
+}
+ 
+fun main() {
+  var myArea = getArea(10, 8)
+  println(&quot;The area is $myArea.&quot;) // Prints: The area is 80.
+}
+</code></pre>
+<h2 id="single-expression-functions"><a class="header" href="#single-expression-functions">Single Expression Functions</a></h2>
+<p>If a function contains only a single expression, we can use a shorthand syntax to create our function.</p>
+<p>Instead of placing curly brackets after the function header to contain the function’s code block, we can use an assignment operator <code>=</code> followed by the expression being returned.</p>
+<pre><code class="language-kotlin">fun fullName(firstName: String, lastName: String) = &quot;$firstName $lastName&quot;
+ 
+fun main() {
+  println(fullName(&quot;Ariana&quot;, &quot;Ortega&quot;)) // Prints: Ariana Ortega
+  println(fullName(&quot;Kai&quot;, &quot;Gittens&quot;)) // Prints: Kai Gittens
+}
+</code></pre>
+<h2 id="function-literals"><a class="header" href="#function-literals">Function Literals</a></h2>
+<p>Function literals are unnamed functions that can be treated as expressions: we can assign them to variables, call them, pass them as parameters, and return them from a function as we could with any other value.</p>
+<p>Two types of function literals are <code>anonymous functions</code> and <code>lambda expressions</code>.</p>
+<pre><code class="language-kotlin">fun main() {
+  // Anonymous Function:
+  var getProduct = fun(num1: Int, num2: Int): Int {
+     return num1 * num2
+  }
+  println(getProduct(8, 3)) // Prints: 24
+ 
+  // Lambda Expression
+  var getDifference = { num1: Int, num2: Int -&gt; num1 - num2 }
+  println(getDifference(10, 3)) // Prints: 7
+}
+</code></pre>
+<h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<p>A class is an object-oriented concept which resembles a blueprint for individual objects. 
+A class can contain properties and functions and is defined using the <code>class</code> keyword followed by a name and optional body.</p>
+<p>If the class does not have a body, its curly braces can be omitted.</p>
+<pre><code class="language-kotlin">// A class with properties that contain default values
+class Student {
+  var name = &quot;Lucia&quot;
+  var semester = &quot;Fall&quot;
+  var gpa = 3.95
+}
+ 
+// Shorthand syntax with no class body 
+class Student 
+</code></pre>
+<h2 id="class-instances"><a class="header" href="#class-instances">Class Instances</a></h2>
+<p>A new instance of a class is created by calling the class name followed by a pair of parentheses <code>()</code> and any necessary arguments.</p>
+<p>When creating an instance of a class, we must declare a variable in which we intend to store our instance and assign it equal to the class call.
+Once the instance has been created, we can use dot syntax to access and retrieve the value of each property.</p>
+<pre><code class="language-kotlin">// Class
+class Student {
+  var name = &quot;Lucia&quot;
+  var semester = &quot;Fall&quot;
+  var gpa = 3.95
+}
+ 
+fun main() {
+  var student = Student()   // Instance
+  println(student.name)     // Prints: Lucia
+  println(student.semester) // Prints: Fall
+  println(student.gpa)      // Prints: 3.95  
+} 
+</code></pre>
+<h2 id="primary-constructor"><a class="header" href="#primary-constructor">Primary Constructor</a></h2>
+<p>A primary constructor defines each property value within a class header and allows us to then set unique values when the object is instantiated.</p>
+<p>To create a primary constructor using the shorthand syntax, we can follow the name of the class with a pair of parentheses <code>()</code> inside of which each property is defined and assigned a data type.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) 
+ 
+fun main() {
+    var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) 
+    println(student.name)     // Prints: Lucia
+    println(student.gpa)      // Prints: 3.95
+    println(student.semester) // Prints: Fall
+    println(student.estimatedGraduationYear) // Prints: 2022
+}
+</code></pre>
+<h2 id="init-blocks"><a class="header" href="#init-blocks">Init Blocks</a></h2>
+<p>The init block gets invoked with every instance that’s created and is used to add logic to the class. 
+The <code>init</code> keyword precedes any member functions and is followed by a pair of curly braces.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+ 
+  init {
+    println(&quot;$name has ${estimatedGraduationYear - 2020} years left in college.&quot;)
+  }
+}
+ 
+fun main() {
+  var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) // Prints: Lucia has 2 years left in college. 
+}
+</code></pre>
+<h2 id="member-functions"><a class="header" href="#member-functions">Member Functions</a></h2>
+<p>A function declared within a class is known as a member function of that class. 
+In order to invoke a member function, we must call the function on an instance of the class.</p>
+<pre><code class="language-kotlin">class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+ 
+  init {
+    println(&quot;$name has ${estimatedGraduationYear - 2020} years left in college.&quot;)
+  }
+ 
+  // Member Function
+  fun calculateLetterGrade(): String {
+    return when {
+      gpa &gt;= 3.0 -&gt; &quot;A&quot;
+      gpa &gt;= 2.7 -&gt; &quot;B&quot;
+      gpa &gt;= 1.7 -&gt; &quot;C&quot;
+      gpa &gt;= 1.0 -&gt; &quot;D&quot;
+      else -&gt; &quot;E&quot;
+    }
+  }
+}
+ 
+// When an instance is created and the function is called, the when expression will execute and return a letter grade
+ 
+fun main() {
+  var student = Student(&quot;Lucia&quot;, 3.95, &quot;Fall&quot;, 2022) // Prints: Lucia has 2 years left in college. 
+  println(&quot;${student.name}'s letter grade is ${student.calculateLetterGrade()}.&quot;) // Prints: Lucia's letter grade is A. 
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

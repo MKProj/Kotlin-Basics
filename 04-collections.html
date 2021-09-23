@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Collections - Kotlin Basics</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="01-intro.html"><strong aria-hidden="true">2.</strong> Hello World Kotlin!</a></li><li class="chapter-item expanded "><a href="02-types.html"><strong aria-hidden="true">3.</strong> Data Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02-01-var.html"><strong aria-hidden="true">3.1.</strong> Mutable &amp; Immutable Variables</a></li><li class="chapter-item expanded "><a href="02-02-str.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="02-03-math.html"><strong aria-hidden="true">3.3.</strong> Math</a></li></ol></li><li class="chapter-item expanded "><a href="03-conditionals.html"><strong aria-hidden="true">4.</strong> Conditional Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03-01-operators.html"><strong aria-hidden="true">4.1.</strong> Conditional Operators</a></li></ol></li><li class="chapter-item expanded "><a href="04-collections.html" class="active"><strong aria-hidden="true">5.</strong> Collections</a></li><li class="chapter-item expanded "><a href="05-loops.html"><strong aria-hidden="true">6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="06-functions.html"><strong aria-hidden="true">7.</strong> Functions</a></li><li class="chapter-item expanded "><a href="07-classes.html"><strong aria-hidden="true">8.</strong> Classes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Kotlin Basics</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/MKProj/Kotlin-Basics/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="collections"><a class="header" href="#collections">Collections</a></h1>
+<p>In Kotlin,  there is various type of collections that exist for different case usages. In this section, we 
+will be covering <code>Lists</code>, <code>Sets</code> and <code>Maps</code>. </p>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<h3 id="mutable-and-immutable-lists"><a class="header" href="#mutable-and-immutable-lists">Mutable and Immutable Lists</a></h3>
+<ul>
+<li>
+<p>An immutable list represents a group of elements with read-only operations.</p>
+<ul>
+<li>It can be declared with the term <code>listOf</code>, followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var fruits = listOf(&quot;Apples&quot;, &quot;Bananas&quot;, &quot;Oranges&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable list represents a group of ordered elements with read and write operations.</p>
+<ul>
+<li>It can be declared with the term, <code>mutableListOf</code> followed by a pair of parentheses containing elements that are separated by commas.</li>
+<li>Ex. <code>var companies = mutableListOf(&quot;Google&quot;, &quot;Tesla&quot;, &quot;Apple&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="acessing-lists-elements"><a class="header" href="#acessing-lists-elements">Acessing Lists Elements</a></h3>
+<p>In order to retrieve an element from a list, we can reference its numerical position or index using square bracket notation <code>[ ]</code>.</p>
+<p><strong>Note:</strong> The beginning index of a list starts at <code>0</code>.</p>
+<h3 id="the-size-property"><a class="header" href="#the-size-property">The Size Property</a></h3>
+<p>The <code>size</code> property returns the size of a collection of the number of elements that exists. </p>
+<pre><code class="language-kotlin">var grades = listOf(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;F&quot;)
+println(grades.size)
+// Prints 5
+</code></pre>
+<h3 id="list-operations"><a class="header" href="#list-operations">List Operations</a></h3>
+<p>The list collection supports various operations in the form of built-in functions that can be performed on its elements.</p>
+<p>Some functions perform read and write operations, whereas others perform read-only operations.</p>
+<p>The functions that perform read and write operations can only be used on <code>mutable</code> lists while read-only operations can be 
+performed on both <code>mutable</code> and <code>immutable</code> lists.</p>
+<pre><code class="language-kotlin">var programming_languages = mutableListOf(&quot;Kotlin&quot;, &quot;Java&quot;, &quot;C++&quot;, &quot;Rust&quot;)
+
+if (programming_languages.contains(&quot;Python&quot;) /*read only*/){
+  println(&quot;Python is pretty cool&quot;)
+} else {
+  programming_languages.add(&quot;Python&quot;) //write 
+}
+</code></pre>
+<h2 id="sets"><a class="header" href="#sets">Sets</a></h2>
+<h3 id="immutable-and-mutable-sets"><a class="header" href="#immutable-and-mutable-sets">Immutable and Mutable Sets</a></h3>
+<ul>
+<li>
+<p>An immutable set represents a collection of unique elements in an unordered format whose elements cannot be changed throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>setOf</code>, followed by a pair of parentheses, <code>( )</code> holding unique values.</li>
+<li><code>var origin_factions = setOf(&quot;Mythicals&quot;, &quot;Sorcerers&quot;, &quot;Kindgom&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>A mutable set represents a collection of ordered elements that possess both read and write functionalities.</p>
+<ul>
+<li>It is declared with the term, <code>mutableSetOf</code>, followed by a pair of parantheses, <code>( )</code> holding unique values. </li>
+<li><code>var mkproj_projects = mutableSetOf(&quot;Phaktionz&quot;, &quot;Books&quot;, &quot;UniConv&quot;, &quot;Moka&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="accessing-set-elements"><a class="header" href="#accessing-set-elements">Accessing Set Elements</a></h3>
+<p>Elements in a set can be accessed using the <code>elementAt()</code> or <code>elementAtOrNull()</code> functions.</p>
+<ul>
+<li>
+<p>The <code>elementAt()</code> function gets appended onto a set name and returns the element at the specified position within the parentheses.</p>
+</li>
+<li>
+<p>The <code>elementAtOrNull()</code> function is a safer variation of the <code>elementAt()</code> function</p>
+<ul>
+<li>Returns <code>null</code> if the position is out of bounds as opposed to throwing an error.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">var example = setOf(&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;)
+
+println(example.elementAt(1)) // Prints Bar
+println(example.elementAt(5)) // Returns an error 
+println(example.elementAtOrNull(5)) // Prints null
+</code></pre>
+<h2 id="maps"><a class="header" href="#maps">Maps</a></h2>
+<h3 id="immutable-and-mutable-maps"><a class="header" href="#immutable-and-mutable-maps">Immutable and Mutable Maps</a></h3>
+<ul>
+<li>
+<p>An immutable Map represents a collection of entries that cannot be altered throughout a program.</p>
+<ul>
+<li>It is declared with the term, <code>mapOf</code>, followed by a pair of parentheses. 
+<ul>
+<li>Within the parentheses, each key should be linked to its corresponding value with the <code>to</code> keyword, and each entry should be separated by a comma.</li>
+<li><code>var student_records = mapOf(&quot;Johnny&quot; to 95, &quot;Billy  to 65, &quot;Kimmy&quot; to 85)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>A mutable map represents a collection of entries that possess read and write functionalities. Entries can be added, removed, or updated in a mutable map.</p>
+<ul>
+<li>A mutable map can be declared with the term, <code>mutableMapOf</code>, followed by a pair of parentheses holding key-value pairs.</li>
+<li><code>var prices = mutableMapOf(&quot;Gum&quot; to 1.50, &quot;Bananas / kg&quot; to 0.88, &quot;Blueberries&quot; to 3.97)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="retrieving-map-keys-and-values"><a class="header" href="#retrieving-map-keys-and-values">Retrieving Map Keys and Values</a></h3>
+<ul>
+<li>Keys and values within a map can be retrieved using the <code>.keys</code> and <code>.values</code> properties.</li>
+<li>The <code>.keys</code> property returns a list of key elements, whereas the <code>.values</code> property returns a list of value elements.</li>
+<li>To retrieve a single value associated with a key, the shorthand, <code>[key]</code>, syntax can be used.</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+println(albums.keys)
+// Prints [&quot;The Chronics&quot;, &quot;The Blueprint&quot;, &quot;Marshall Mathers LP&quot;]
+println(albums.values)
+// Prints [&quot;Dr Dre&quot;, &quot;Jay Z&quot;, &quot;Eminem&quot; ]
+println(albums[&quot;The Blueprint&quot;])
+// Prints Jay Z
+</code></pre>
+<h3 id="adding-and-removing-map-entries"><a class="header" href="#adding-and-removing-map-entries">Adding and Removing Map Entries</a></h3>
+<p>An entry can be added to a mutable map using the <code>put()</code> function. 
+Oppositely, an entry can be removed from a mutable map using the <code>remove()</code> function.</p>
+<ul>
+<li>
+<p>The <code>put()</code> function accepts a key and a value separated by a comma.</p>
+</li>
+<li>
+<p>The <code>remove()</code> function accepts a key and removes the entry associated with that key</p>
+</li>
+</ul>
+<pre><code class="language-kotlin">var albums = mutableMapOf(&quot;The Chronics&quot; to &quot;Dr Dre&quot;, &quot;The Blueprint&quot; to &quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot; to &quot;Eminem&quot;)
+
+albums.put(&quot;All Eyez On Me&quot;, &quot;2Pac&quot;)
+
+println(albums)
+// Prints {&quot;The Chronics&quot;=&quot;Dr Dre&quot;, &quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+albums.remove(&quot;The Chronics&quot;)
+println(albums)
+// Prints {&quot;The Blueprint&quot;=&quot;Jay Z&quot;, &quot;Marshall Mathers LP&quot;=&quot;Eminem&quot;, &quot;All Eyez On Me&quot;=&quot;2Pac&quot;}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="03-01-operators.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="05-loops.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="03-01-operators.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="05-loops.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
